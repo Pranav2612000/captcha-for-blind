@@ -9,8 +9,9 @@ require '../config.php';
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 -->
-<link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css" ?>>
-<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
@@ -127,6 +128,7 @@ require '../config.php';
     }
     recognitaion.start();
   }
+<<<<<<< HEAD
 
   function changeLanguage(e) {
     e.preventDefault();
@@ -162,6 +164,10 @@ require '../config.php';
     });
   }
 
+=======
+  recognitaion.start();
+}
+>>>>>>> feat: add file with js code to translate pages
 </script>
 <script>
   function getAudio() {
