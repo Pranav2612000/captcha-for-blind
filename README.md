@@ -17,6 +17,11 @@ We are team Neoteric from College of engineering Pune and our problem statement 
 * Difficulty in figuring out letters and words, for the visually impaired and dyslexic
 * Difficulty in understanding the audio due to accents, and similar background noise 
 
+### Innovative features of our solution:
+* ability to hear all questions
+* ability to use speech to text to answer questions
+* questions are chosen depending on users geographical area and language
+* use of mechanisms which do not require humans to understand a specific language, or have profound knowledge 
 
 ### Types of Captcha:
 
@@ -33,22 +38,24 @@ This helps dyslexic and partially blind people who find it difficult to read cap
 #### Word Chain:
 
 ![Screenshot](assets/images/word_chain.jpg)
-< what it is >
+
 We ask users to press a key if a certain chosen word is present in a set of further words, and another if it is not.
 This is helpful for blind, less educated people as they do not need any previous knowledge to solve these questions
 
 #### Pressure:
 
 ![Screenshot](assets/images/pressure.jpeg)
+
 We ask users to press on the screen, and validate them using the the features of the press(time, intensity)
 This captcha can be easily used by completely blind people, as there is no need to read and understand anything.
 
 Currently, only long press pressure detection has been implemented, we plan to implement short press detection.
-​
+
 
 #### Symbol Recognition:
 
 ![Screenshot](assets/images/shape.jpeg)
+
 We ask users to draw on the screen, and use ML algorithms to check whether users have drawn the correct shape, to authenticate them.
 This is helpful for blind, less educated people as they do not need any previous knowledge to solve these questions.
 
@@ -57,6 +64,7 @@ This is helpful for blind, less educated people as they do not need any previous
 #### Character Recognition:
 
 ![Screenshot](assets/images/letter.jpeg)
+
 We ask users to draw letters on screen, and use ML algorithms to check whether users have drawn the correct shape, to authenticate them.
 This is helpful for blind, less educated people as they do not need any previous knowledge to solve these questions.
 
@@ -64,6 +72,7 @@ This is helpful for blind, less educated people as they do not need any previous
 #### Motion Recognition - Swipe:
 
 ![Screenshot](assets/images/touch.jpeg)
+
 We ask users to perform actions like swipe, pinch, tap etc.(Pinch, tap to be implemented).
 This can be helpful for dyslexic and less blind people who find it difficult to see & understand complex instructions.
 
