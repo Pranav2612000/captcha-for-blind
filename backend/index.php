@@ -18,10 +18,19 @@ if(isset($_POST['region'])) {
 }
 
 if($region === "punjab") {
-  $questionnaire_arr = array("Identify non south \nIndian food? .\n1) Dosa .\n2) idlis.\n3) Vada pav.\n4) Uttapams."  => 'Vada pav');
+  $questionnaire_arr = array("Identify the capital \nof Punjab? .\n1) Chandigad .\n2) Mumbai.\n3) Chennai.\n4) Hydarabad."  => 'Chandigad', "Which of these is the \nfolk dance of Punjab  .\n1) Kuchipudi .\n2) Bhangra.\n3) Ghumar.\n4) Kathakali."  => 'Bhangra', "Which of these \nis in Punjab?  .\n1) Golden Temple .\n2) Taj Mahal.\n3) Gateway of India.\n4) Agra Fort."  => 'Golden Temple');
 }
-else {
-  $questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december');
+else if($region === "maharastra") {
+  $questionnaire_arr = array("Where is \nShanivar vada? .\n1) Delhi .\n2) maharshtra.\n3) kasmir.\n4) Gujarat."  => 'maharshtra', "Guess city of \nMaharashtra?  .\n1) Amritsar .\n2) Gandhinagar .\n3) Hyderabad.\n4) Pune."  => 'Pune', "Where is lonaval? .\n1) Gujarat .\n2) Rajasthan .\n3) maharashtra.\n4) Kasmir."  => 'maharshtra', "What is the Capital \nof Maharashtra?  .\n1) Mumbai .\n2) Assam .\n3) West Bengal.\n4) Gujarat."  => 'Mumbai', "Which is a famous \nMaharashtrian festival?  .\n1)Gudi padwa  .\n2) Onam.\n3) Durga Pooja.\n4) Eid."  => 'Gudi padwa',);
+}
+else if($region === "andhrapradesh") {
+  $questionnaire_arr = array("Identify non south \nIndian food? .\n1) Dosa .\n2) idlis.\n3) Vada pav.\n4) Uttapams."  => 'Vada pav', "Who is famous south \nIndian Actor?  .\n1) Rajnikant .\n2) Salman Khan.\n3) Akshay Kumar .\n4) Shahrukh Khan."  => 'Rajnikant');
+}
+else if($region === "westbengal") {
+  $questionnaire_arr = array("Identify a famous \nbengali sweet?  .\n1) Laddu .\n2) Kulfi.\n3) Rasgulla.\n4) Dosa."  => 'Rasgulla', "Which is a famous \nbengali festival?  .\n1) Gudi padwa  .\n2) Onam.\n3) Durga Pooja.\n4) Eid."  => 'Durga Pooja');
+}
+else{
+  $questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december', "what is India \ncalled in hindi?  .\n1) Bharat.\n2) China.\n3) Delhi.\n4) Africa."  => 'Bharat', "What is the Capital \nof India?  .\n1) Delhi.\n2) Nepal.\n3) Kashmir.\n4) Assam."  => 'Delhi', );
 }
 
 $shapes_arr = array('circle', 'triangle');

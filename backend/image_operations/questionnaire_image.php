@@ -70,7 +70,7 @@ if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'mr') {
   $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
 } else {
   //$randomNumber = rand(0,34); 
-  $font = dirname(__FILE__) . '/../../assets/fonts/font0.ttf';
+  $font = dirname(__FILE__) . '/../../assets/fonts/Gidugu.ttf';
 }
 
 /*$randomBgColor = rand(0,1);

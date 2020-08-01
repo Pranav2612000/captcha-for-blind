@@ -20,9 +20,9 @@ require '../config.php';
       <select name="region" id="region" onchange="changeRegion(event)">
         <option value="default">Default</option>
         <option value="punjab">Punjab</option>
-        <option value="andhra pradesh">Andhra Pradesh</option>
+        <option value="andhrapradesh">Andhra Pradesh</option>
         <option value="maharastra">Maharastra</option>
-        <option value="west bengal">West Bengal</option>
+        <option value="westbengal">West Bengal</option>
       </select>
     </div>
     <label class='ca-label'>Solve the question below and write your answer in the space provided below</label>
