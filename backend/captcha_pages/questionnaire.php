@@ -29,8 +29,8 @@ require '../config.php';
     <div class='ca-img-container'>
       <img class="ca-img" id="captcha_image" />
     </div>
-    <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off" />
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>
+    <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
+    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')">Switch language</button>
     <button class='ca-button' id='voice_inp' onclick="record(event)">Record Answer</button>
     <input class='ca-button' type="button" name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus />
     <input class='ca-button' type="submit" name="register" id="submit" value="Check" />
@@ -117,57 +117,35 @@ require '../config.php';
   };
 </script>
 <script type="text/javascript">
-  function record(e) {
-    e.preventDefault();
-    console.log('recording...');
-    var recognitaion = new webkitSpeechRecognition();
-    recognitaion.lang = "en-GB";
-    recognitaion.onresult = function(event) {
-      console.log(event);
-      document.getElementById('captcha_code').value = document.getElementById('captcha_code').value + event.results[0][0].transcript;
-    }
-    recognitaion.start();
+function record(e) {
+  e.preventDefault();
+  console.log('recording...');
+  var recognitaion = new webkitSpeechRecognition();
+  recognitaion.lang = "en-GB";
+  recognitaion.onresult = function(event) {
+    console.log(event);
+    document.getElementById('captcha_code').value = document.getElementById('captcha_code').value + event.results[0][0].transcript;
   }
-<<<<<<< HEAD
-
-  function changeLanguage(e) {
-    e.preventDefault();
-    $.ajax({
-      //url:"../backend/captcha_pages/questionnaire.php",
-      url: "../backend/index.php",
-      method: "POST",
-      data: {
-        "captcha_type": "questionnaire",
-        "lang": "hi"
-      },
-      success: function(data) {
-        jQuery('#captcha').html(data);
-      }
-    });
-  }
-
-  function changeRegion(e) {
-    console.log(document.getElementById("region").value);
-    e.preventDefault();
-    $.ajax({
-      //url:"../backend/captcha_pages/questionnaire.php",
-      url: "../backend/index.php",
-      method: "POST",
-      data: {
-        "captcha_type": "questionnaire",
-        "lang": "en",
-        "region": document.getElementById("region").value
-      },
-      success: function(data) {
-        jQuery('#captcha').html(data);
-      }
-    });
-  }
-
-=======
   recognitaion.start();
 }
->>>>>>> feat: add file with js code to translate pages
+
+function changeRegion(e) {
+  console.log(document.getElementById("region").value);
+  e.preventDefault();
+  $.ajax({
+    //url:"../backend/captcha_pages/questionnaire.php",
+    url: "../backend/index.php",
+    method: "POST",
+    data: {
+      "captcha_type": "questionnaire",
+      "lang": "en",
+      "region": document.getElementById("region").value
+    },
+    success: function(data) {
+      jQuery('#captcha').html(data);
+    }
+  });
+}
 </script>
 <script>
   function getAudio() {

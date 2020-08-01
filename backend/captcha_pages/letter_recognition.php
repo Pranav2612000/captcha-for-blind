@@ -6,6 +6,7 @@ require '../config.php';
 <script src=<?php echo $base_url . "js/predicter.js"?>></script>
 <link href=<?php echo $base_url . "css/main.css"?> rel="stylesheet">
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 
 <div class="ca-panel-body">

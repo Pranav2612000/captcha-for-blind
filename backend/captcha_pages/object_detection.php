@@ -3,6 +3,8 @@ require '../config.php';
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
+
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <canvas id="ca-canvas"></canvas> 
@@ -10,7 +12,7 @@ require '../config.php';
     <div class='ca-img-container'>
       <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=200"; ?> id="captcha_image" />
     </div>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>
+    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'object_detection')">Switch language</button>
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio()" autofocus/>
     <div>
       <audio id="valid">
@@ -64,20 +66,6 @@ function getAudio(){
       success:function(result){
           jQuery('#player').html(result);
       }
-  });
-}
-function changeLanguage(e) {
-  e.preventDefault();
-  $.ajax({
-   //url:"../backend/captcha_pages/questionnaire.php",
-   url:"../backend/index.php",
-   method:"POST",
-   data:{"captcha_type" : "object_detection",
-         "lang" : "hi"
-        },
-   success:function(data) {
-     jQuery('#captcha').html(data);
-   }
   });
 }
 

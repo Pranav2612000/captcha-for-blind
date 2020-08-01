@@ -2,7 +2,9 @@
 require '../config.php';
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
+
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <p>If
@@ -24,7 +26,7 @@ require '../config.php';
     </div>
     <label>Write your Answer</label>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" />
-    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event)">Switch language</button>
+    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')">Switch language</button>
     <button class='ca-button' id='voice_inp' onclick="record(event)">Record Answer</button>
     <input class='ca-button' type="button" name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus />
     <input class='ca-button' type="submit" name="register" id="submit" value="Check" />
@@ -70,22 +72,6 @@ require '../config.php';
       type: 'post',
       success: function(result) {
         jQuery('#ca-player').html(result);
-      }
-    });
-  }
-
-  function changeLanguage(e) {
-    e.preventDefault();
-    $.ajax({
-      //url:"../backend/captcha_pages/questionnaire.php",
-      url: "../backend/index.php",
-      method: "POST",
-      data: {
-        "captcha_type": "word_chain",
-        "lang": "hi"
-      },
-      success: function(data) {
-        jQuery('#captcha').html(data);
       }
     });
   }

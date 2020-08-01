@@ -3,6 +3,8 @@ require '../config.php';
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/touch.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
+
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <label class='ca-label'>Perform the following action</label>
@@ -11,7 +13,7 @@ require '../config.php';
     </div>
     <!--<div class="touch-sensor" style="height:200px;width:400px;background:lightblue"></div>-->
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
-    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event)">Switch language</button>
+    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'touch')">Switch language</button>
     <!-- TODO: Modularize -->
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
@@ -32,7 +34,7 @@ require '../config.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 <script>
 var base_url = "<?php echo $base_url; ?>";
-var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect()
+var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
 elem_width = elem_width.width;
 img_width = elem_width - 20;
 $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=40&width=" + img_width);
@@ -48,20 +50,6 @@ function getAudio(e){
       success:function(result){
           jQuery('#player').html(result);
       }
-  });
-}
-function changeLanguage(e) {
-  e.preventDefault();
-  $.ajax({
-   //url:"../backend/captcha_pages/questionnaire.php",
-   url:"../backend/index.php",
-   method:"POST",
-   data:{"captcha_type" : "touch",
-         "lang" : "hi"
-        },
-   success:function(data) {
-     jQuery('#captcha').html(data);
-   }
   });
 }
 var v = document.getElementById("valid"); 
@@ -80,8 +68,7 @@ function sendRequest(value) {
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>");
-        //$('#register').attr('disabled', false);
+        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>"); //$('#register').attr('disabled', false);
       } else {
         i.play();
         alert("Unsuccessful validation");

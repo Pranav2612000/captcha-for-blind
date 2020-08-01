@@ -6,6 +6,7 @@ require '../config.php';
 
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
@@ -14,7 +15,7 @@ require '../config.php';
       <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=40"; ?> id="captcha_image" />
     </div>
     <button id="audio" class="ca-button" onclick="getAudio(event)">Audio</button>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>
+    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'pressure')">Switch language</button>
 
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
@@ -34,21 +35,6 @@ require '../config.php';
 
 
 <script>
-function changeLanguage(e) {
-  e.preventDefault();
-  $.ajax({
-   //url:"../backend/captcha_pages/questionnaire.php",
-   url:"../backend/index.php",
-   method:"POST",
-   data:{"captcha_type" : "pressure",
-         "lang" : "hi"
-        },
-   success:function(data) {
-     jQuery('#captcha').html(data);
-   }
-  });
-}
-
 var base_url = "<?php echo $base_url; ?>";
 var v = document.getElementById("valid"); 
 var i = document.getElementById("invalid"); 
