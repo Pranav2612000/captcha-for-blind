@@ -17,12 +17,12 @@ require '../config.php';
     <label class='ca-label'>Select the region</label>
     <div>
       <select name="region" id="region" onchange="changeRegion(event)">
+        <option value="default">Default</option>
         <option value="punjab">Punjab</option>
         <option value="andhra pradesh">Andhra Pradesh</option>
         <option value="maharastra">Maharastra</option>
         <option value="west bengal">West Bengal</option>
       </select>
-
     </div>
     <label class='ca-label'>Solve the question below and write your answer in the space provided below</label>
     <div class='ca-img-container'>
@@ -145,6 +145,7 @@ require '../config.php';
   }
 
   function changeRegion(e) {
+    console.log(document.getElementById("region").value);
     e.preventDefault();
     $.ajax({
       //url:"../backend/captcha_pages/questionnaire.php",
@@ -152,7 +153,8 @@ require '../config.php';
       method: "POST",
       data: {
         "captcha_type": "questionnaire",
-        "region": document.getElementById("region")
+        "lang": "en",
+        "region": document.getElementById("region").value
       },
       success: function(data) {
         jQuery('#captcha').html(data);

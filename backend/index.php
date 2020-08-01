@@ -6,16 +6,18 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 ini_set("log_errors", 1);
 session_start();
-$lang = $_POST['lang'];
-$region = $POST['region'];
 
 if(isset($_POST['lang'])) {
   $lang = $_POST['lang'];
   $_SESSION['lang'] = $lang;
 }
 
-echo $region;
-if($region === "punjab"){
+if(isset($_POST['region'])) {
+  $region = $_POST['region'];
+  $_SESSION['region'] = $region;
+}
+
+if($region === "punjab") {
   $questionnaire_arr = array("Identify non south \nIndian food? .\n1) Dosa .\n2) idlis.\n3) Vada pav.\n4) Uttapams."  => 'Vada pav');
 }
 else {
