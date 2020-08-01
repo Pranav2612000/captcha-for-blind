@@ -125,7 +125,7 @@ for ($x = 1; $x <= ($img_width * $img_height / 700); $x++){
     imageline($img, $x1, $y1, $x2, $y2, $text_color);
 }
 
-imagettftext($img, 30, 0, 50, $img_height/$num_of_newlines , $text_color, $font, $question);
+imagettftext($img, 30, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
 imagepng($img);
 imagedestroy($img);
 
