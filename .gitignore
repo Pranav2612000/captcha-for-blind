@@ -1,4 +1,1 @@
-assets/audio/*
-/assets/audio/*
-/assets/audio/
-assets/audio/
+**/audio
