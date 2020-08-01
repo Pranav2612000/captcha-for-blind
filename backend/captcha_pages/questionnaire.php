@@ -1,5 +1,7 @@
 <?php
 require '../config.php';
+session_start();
+
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -15,7 +17,7 @@ require '../config.php';
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <label class='ca-label'>Select the region</label>
+    <label class='ca-label'><?php print $_SESSION["ins2"]; ?></label>
     <div>
       <select name="region" id="region" onchange="changeRegion(event)">
         <option value="default">Default</option>
@@ -25,15 +27,27 @@ require '../config.php';
         <option value="westbengal">West Bengal</option>
       </select>
     </div>
-    <label class='ca-label'>Solve the question below and write your answer in the space provided below</label>
+
+    <label class='ca-label'><?php print $_SESSION["ins1"]; ?></label>
     <div class='ca-img-container'>
       <img class="ca-img" id="captcha_image" />
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')">Switch language</button>
-    <button class='ca-button' id='voice_inp' onclick="record(event)">Record Answer</button>
-    <input class='ca-button' type="button" name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus />
-    <input class='ca-button' type="submit" name="register" id="submit" value="Check" />
+    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"><?php print $_SESSION["lang_switch"]; ?></button>
+    <div>
+      <select name="lang" id="lang" onchange="changeLanguage(event, 'questionnaire')">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="gu">Gujarati</option>
+        <option value="mr">Marathi</option>
+        <option value="bn">Bengali</option>
+        <option value="pa">Punjabi</option> 
+      </select>
+    </div>
+
+    <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
+    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus ><?php print $_SESSION["audio"]; ?></button>
+    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
 
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">

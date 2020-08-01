@@ -5,6 +5,7 @@ session_start();
 //$captcha_code = $index;
 //
 $q_secret = $_SESSION['q_secret_img'];
+$ins1 = $_SESSION['ins1'];
 
 if(isset($_GET['id'])) {
   $img_id = $_GET['id'];
@@ -61,8 +62,8 @@ $imgResized = imagescale($image , 200, 400);*/
 if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'mr') {
   $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
 } else {
-  //$randomNumber = rand(0,34); 
-  $font = dirname(__FILE__) . '/../../assets/fonts/Gidugu.ttf';
+    $randomNumber = rand(0,95); 
+    $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.ttf';  
 }
 
 /*$randomBgColor = rand(0,1);
@@ -76,9 +77,47 @@ else
 
 //$img = imagecreatefrompng($imgfile);
 
-$img = imagecreatetruecolor(500, 400);
-$background_color = imagecolorallocate($img, 255, 255, 255);
-imagefilledrectangle($img, 0, 0, 500, 400, $background_color);
+//$randjpeg = rand(0, 1);  #1 - jpeg , 0 -png
+$randomBgColor = rand(0,3);
+if($randomBgColor == 0){
+  //if($randjpeg == 1)
+   // $randomNumberForBg = rand(8,20);
+  //else
+    $randomNumberForBg = rand(1,7); 
+}
+else if($randomBgColor == 1){
+  //if($randjpeg == 1)
+    //$randomNumberForBg = rand(8,20);
+  //else 
+    $randomNumberForBg = rand(1,16);
+}
+else if($randomBgColor == 2){
+  $randomNumberForBg = rand(1,20); 
+}
+else if($randomBgColor == 3){
+  $randomNumberForBg = rand(1,20); 
+}
+
+
+/*if($randjpeg == 1){
+  $imgfile = dirname(__FILE__) . '/../../assets/backgrounds/'.$randomBgColor.'/jpeg/'.$randomNumberForBg.'.png';
+}
+else{*/
+    if($randomBgColor == 0 || $randomBgColor == 1){
+        $imgfile = dirname(__FILE__) . '/../../assets/backgrounds/'.$randomBgColor.'/'.$randomNumberForBg.'.png';
+        $img = imagecreatefrompng($imgfile);
+
+    }
+    else {
+        $imgfile = dirname(__FILE__) . '/../../assets/backgrounds/'.$randomBgColor.'/'.$randomNumberForBg.'.jpeg'; 
+        $img = imagecreatefromjpeg($imgfile);
+
+    }
+//}
+
+//$img = imagecreatetruecolor(500, 400);
+//$background_color = imagecolorallocate($img, 255, 255, 255);
+//imagefilledrectangle($img, 0, 0, 500, 400, $background_color);
 
 
 $cropping_rect = ['x' => 0,
@@ -105,7 +144,46 @@ $img = imagecrop($img, $cropping_rect );
     else
         $text_color = imagecolorallocate($img, 41, 10, 10); #dark brown
 }*/
-$text_color= imagecolorallocate($img, 0, 0, 0);
+
+if($randomBgColor == 0){
+    $randomTextColor = rand(1, 2);
+    if($randomTextColor == 1)
+        $text_color = imagecolorallocate($img, 250, 250, 200); #cream
+    else 
+        $text_color = imagecolorallocate($img, 255, 255, 0);  #yellow
+} 
+else if($randomBgColor == 1){
+    $randomTextColor = rand(1, 4);
+    if($randomTextColor == 1)
+        $text_color = imagecolorallocate($img, 0, 0, 0); #black
+    else if($randomTextColor == 2)
+        $text_color = imagecolorallocate($img, 0, 0, 102); #blue
+    else if($randomTextColor == 3)
+        $text_color = imagecolorallocate($img, 122, 31, 31); #brown
+    else
+        $text_color = imagecolorallocate($img, 41, 10, 10); #dark brown
+}
+else if($randomBgColor == 2){
+    $randomTextColor = rand(1, 2);
+    if($randomTextColor == 1)
+        $text_color = imagecolorallocate($img, 0, 0, 0); #black
+    else 
+        $text_color = imagecolorallocate($img, 0, 0, 102); #blue
+}
+else if($randomBgColor == 3){
+    $randomTextColor = rand(1, 3);
+    if($randomTextColor == 1)
+        $text_color = imagecolorallocate($img, 250, 250, 200); #cream
+    else if($randomTextColor == 2)
+        $text_color = imagecolorallocate($img, 213, 93, 93); #light brown 
+    else if($randomTextColor == 3)
+        $text_color = imagecolorallocate($img, 255, 255, 128); #light yellow rgb(255, 255, 128) 
+
+
+}
+
+
+//$text_color= imagecolorallocate($img, 0, 0, 0);
 
 // Decide no of lines to draw depending on the area
 for ($x = 1; $x <= ($img_width * $img_height / 700); $x++){
