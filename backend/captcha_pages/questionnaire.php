@@ -168,7 +168,6 @@ function changeRegion(e) {
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  ////http://jsfiddle.net/JamesD/8q7Mu/
   document.onkeydown = function(e) {
     /*window.event.preventDefault()
 
@@ -211,7 +210,6 @@ function changeRegion(e) {
       case 52: //right key
         $('#voice_inp').focus();
         break;
-
       case 53: //down key
         $('#audio').focus();
         break;

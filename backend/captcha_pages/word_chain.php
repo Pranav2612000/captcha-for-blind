@@ -121,31 +121,52 @@ require '../config.php';
 
 <div id=arrow></div>
 <script>
-  function disp(str) {
-    //alert(str);
-    document.getElementById('arrow').innerHTML = str;
+function isAInput(ele) {
+  var inputs = document.getElementsByTagName('input');
+  var inputs_array = [...inputs];
+  if (inputs_array.includes(ele)) {
+    return true;
+  } else {
+    return false;
   }
-  ////http://jsfiddle.net/JamesD/8q7Mu/
-  document.onkeydown = function() {
-    switch (window.event.keyCode) {
-      case 87: //left arrow
-        $("#captcha_code").focus();
-        break;
-      case 69: //left arrow
-        $("#submit").focus();
-        break;
-      case 76: //up arrow
-        $("#switch_lang").focus();
-        break;
+}
 
-      case 82: //right key
-        $('#voice_inp').focus();
-        break;
+function disp(str) {
+  //alert(str);
+  document.getElementById('arrow').innerHTML = str;
+}
 
-      case 65:  //down key
-        $('#audio').focus();
-        break;
-
+document.addEventListener('keydown', function(e) {
+  console.log(e);
+  if(isAInput(e.target)) {
+    return;
+  }
+  if(e.keyCode == 65) {
+    console.log('a pressed');
+    $('#audio').focus();
+    return;
+  } 
+  if(e.keyCode == 87) {
+    console.log('left arraw pressed');
+    $("#captcha_code").focus();
+    return;
+  } 
+  if(e.keyCode == 69) {
+    console.log('right arrow pressed');
+    $("#submit").focus();
+    return;
+  } 
+  if(e.keyCode == 76) {
+    console.log('up pressed');
+    if($('#switch_lang')) {
+      $("#switch_lang").focus();
     }
-  };
+    return;
+  }
+  if(e.keyCode == 82) {
+    console.log('down pressed');
+    $('#voice_inp').focus();
+    return;
+  }
+}, true);
 </script>
