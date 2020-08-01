@@ -69,7 +69,7 @@ $('#captcha_form').on('submit', function(event){
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('#captcha').html("<h3> Captcha Validated </h3>");
+        $('#captcha').html("<h3 class='ca-validated'> Captcha Validated </h3>");
         //$('#register').attr('disabled', false);
       } else {
         i.play();
