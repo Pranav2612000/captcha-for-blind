@@ -5,14 +5,6 @@ session_start();
 //$captcha_code = $index;
 //
 $q_secret = $_SESSION['q_secret_img'];
-if(isset($_SESSION['shape'])) {
-  $question = $_SESSION['shape'];
-} elseif(isset($_SESSION['pressure_id'])) {
-  $question = $_SESSION['pressure_id'];
-}
-else {
-  $question = $_SESSION['question'];
-}
 
 if(isset($_GET['id'])) {
   $img_id = $_GET['id'];
