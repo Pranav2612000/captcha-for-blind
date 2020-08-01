@@ -26,6 +26,7 @@ We are team Neoteric from College of engineering Pune and our problem statement 
 #### Questionnaire:
 
 ![Screenshot](assets/images/questionnaire.jpeg) 
+
 We ask a simple question to the user, depending on his geographic location. The user needs to select the correct option and can either type the naswer in the box or speak out the answer, to have it typed out. 
 This helps dyslexic and partially blind people who find it difficult to read captcha, but can easily solve these questions.
 
