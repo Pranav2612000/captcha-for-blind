@@ -161,7 +161,8 @@ if($captcha_type == 'word_chain') {
 if($captcha_type == 'touch') {
   // choose between press and swipe. If press ,chose a random no for num of touches between 1 and 5.
   $question = array_rand($touch_array);
-  if($question== 0) {
+  //if($question== 0) {
+  if(false) {
     $no_of_presses = rand(1, 6);
     //$no_of_presses = 5;
     $question_stmt = $touch_array[$question] . " " . $no_of_presses . " times";
