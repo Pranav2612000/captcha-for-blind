@@ -13,6 +13,7 @@ require '../helpers/add_placeholder.php';
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
+<script src= <?php echo $base_url ."js/changeRegion.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -168,23 +169,6 @@ function record(e) {
   recognitaion.start();
 }
 
-function changeRegion(e) {
-  console.log(document.getElementById("region").value);
-  e.preventDefault();
-  $.ajax({
-    //url:"../backend/captcha_pages/questionnaire.php",
-    url: "../backend/index.php",
-    method: "POST",
-    data: {
-      "captcha_type": "questionnaire",
-      "lang": "en",
-      "region": document.getElementById("region").value
-    },
-    success: function(data) {
-      jQuery('#captcha').html(data);
-    }
-  });
-}
 </script>
 <script>
   function getAudio() {
