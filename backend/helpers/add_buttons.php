@@ -7,11 +7,11 @@ function add_buttons() {
       </button>
 
       <button id='change_captcha' class='ca-button' onclick='switchCaptcha(event)'>
-        <img class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/switch.png'/>
+        <img id='change-captcha-img' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/switch.png'/>
       </button>
 
       <button class='ca-button' id='switch_lang' onclick='myFunction(event)'>
-        <img class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
+        <img id='ca-switch-lang-icon' onclick='myFunction(event)' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
         <div id='myDropdown' class='dropdown-content'>
           <a href='#' class='ca-ignore'>Link 1</a>
           <a href='#' class='ca-ignore'>Link 2</a>

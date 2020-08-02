@@ -21,13 +21,12 @@ require '../helpers/add_buttons.php';
 <div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <label class='ca-label'>Perform the following action</label>
     <div class='ca-img-container'>
       <img class='ca-img' id="captcha_image" />
     </div>
     <?php 
       add_buttons();
-      add_switch_language_elem();
+      //add_switch_language_elem();
     ?>
     <!-- TODO: Modularize -->
     <audio id="valid">
@@ -84,7 +83,11 @@ function sendRequest(value) {
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>"); //$('#register').attr('disabled', false);
+        var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
+        placeholder.style.border = "4px solid green";
+        $('.ca-panel-body').hide(1000);
+        tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
+        $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
       } else {
         i.play();
         alert("Unsuccessful validation");
@@ -135,6 +138,9 @@ $(document).ready(function(){
   });
 
   manager.on('doubletap', function(e) {
+    if(isAButton(e.target))  {
+      return;
+    }
     console.log('doubletap');
   });
 
@@ -142,6 +148,9 @@ $(document).ready(function(){
   var deltaY = 0;
 
   manager.on('swipe', function(e) {
+    if(isAButton(e.target))  {
+      return;
+    }
     var direction = e.offsetDirection;
     console.log('swiping ' + direction);
     sendRequest("none");

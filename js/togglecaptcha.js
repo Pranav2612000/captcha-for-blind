@@ -8,7 +8,13 @@ function play_change_lang(){
 }
 
 var audio;
-function toggleCaptcha() {
+function toggleCaptcha(e) {
+  var switch_audio_elem = document.getElementById('ca-switch-lang-icon');
+  console.log(e.target);
+  console.log(switch_audio_elem);
+  if(e.target == switch_audio_elem) {
+    return;
+  }
   console.log('opening');
   var captcha_body = document.getElementsByClassName("ca-panel-body")[0];
   var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 

@@ -78,6 +78,7 @@ var s = 0;
 var block = {
   start: function(event){
     console.log(event);
+    console.log(in_scope);
     if(isAButton(event.target)) {
       return;
     }
@@ -94,6 +95,7 @@ var block = {
 
   change: function(force, event){
     console.log(event);
+    console.log(in_scope);
     if(isAButton(event.target)) {
       return;
     }
@@ -112,6 +114,8 @@ var block = {
 
   startDeepPress: function(event){
     console.log(event);
+    console.log(in_scope);
+    
     if(isAButton(event.target)) {
       return;
     }
@@ -130,7 +134,6 @@ var block = {
   },*/
 	
    end: function(e){
-    console.log(e);
     /*
     if(isAButton(e.target)) {
       return;
