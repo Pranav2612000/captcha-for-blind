@@ -15,6 +15,8 @@ require '../helpers/add_placeholder.php';
 <script src= <?php echo $base_url ."js/translate.js"?>/>
 <script src= <?php echo $base_url ."js/changeRegion.js"?>/>
 <script src= <?php echo $base_url ."js/record.js"?>/>
+<script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
+<script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -175,70 +177,4 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  document.onkeydown = function(e) {
-
-    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
-      window.event.preventDefault()
-        console.log( "You pressed CTRL + m");
-        $("#captcha_code").focus();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + y" );
-        $("#submit").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + u" );
-        $("#switch_lang").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + i" );
-        $('#voice_inp').click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + v" );
-        $('#audio').click();
-
-    }*/
-    switch (window.event.keyCode) {
-      case 87: //w
-      window.event.preventDefault();
-        console.log("w");
-        $("#captcha_code").focus();
-        break;
-      case 89: //y
-      window.event.preventDefault();
-      console.log("y");
-        $("#submit").click();
-        break;
-      case 76: //l
-      window.event.preventDefault();
-      console.log("l");
-        $("#switch_lang").click();
-        break;
-
-      case 73: //i
-      window.event.preventDefault();
-      console.log("i");
-        $('#voice_inp').click();
-        break;
-      case 65: //a
-      window.event.preventDefault();
-      console.log("a");
-        $('#audio').click();
-        break;
-
-    }
-  };
 </script>
