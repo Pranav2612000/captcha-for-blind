@@ -27,6 +27,7 @@ function toggleCaptcha(e) {
     captcha_body.style.display = "block";
     $("#cap_open").show("1000");
     $("#cap_closed").hide("1000");
+    ended = false;
     //placeholder.style.display = "none";
     if(audio && audio.paused) {
       audio = new Audio( base_url + 'assets/sounds/guides/ins.mp3');
@@ -37,5 +38,6 @@ function toggleCaptcha(e) {
     placeholder.style.border = "4px solid green";
     $("#cap_open").hide("1000");
     $("#cap_closed").show("1000");
+    ended = true;
   }
 }
