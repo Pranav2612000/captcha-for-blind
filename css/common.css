@@ -7,6 +7,9 @@
   text-align: center;
   color: gray;
 }
+.ca-placeholder-body {
+  border: 2px solid green;
+}
 
 #captcha_form {
   margin-top: 5%;

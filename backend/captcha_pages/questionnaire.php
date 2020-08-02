@@ -1,5 +1,6 @@
 <?php
 require '../config.php';
+require '../helpers/add_placeholder.php';
 session_start();
 
 ?>
@@ -14,7 +15,7 @@ session_start();
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
-
+<?php put_placeholder()?>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <label class='ca-label'><?php print $_SESSION["ins2"]; ?></label>
@@ -71,6 +72,9 @@ session_start();
   img_width = elem_width - 20;
   $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=400&width=" + img_width);
   $(document).ready(function() {
+    var body = document.getElementsByClassName('ca-panel-body')[0];('ca-panel-body')[0];
+    console.log(body);
+    body.style.display="none";
     var v = document.getElementById("valid");
     var i = document.getElementById("invalid");
     var e = document.getElementById("enter");
