@@ -25,8 +25,6 @@ require '../helpers/add_buttons.php';
     <div class='ca-img-container'>
       <img class='ca-img' id="captcha_image" />
     </div>
-    <!--<div class="touch-sensor" style="height:200px;width:400px;background:lightblue"></div>-->
-    <!--<label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>-->
     <?php 
       add_buttons();
       add_switch_language_elem();

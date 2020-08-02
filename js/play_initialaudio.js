@@ -1,7 +1,7 @@
 no_of_times_audio = 1;
 function load_audio() {
   if(no_of_times_audio == 1) {
-    var audio = new Audio( base_url + 'assets/sounds/guides/Hindi_pop_up_instruction.mp3');
+    var audio = new Audio( base_url + 'assets/audio/guides/open_cap.mp3');
     audio.play();
   }
   no_of_times_audio--;

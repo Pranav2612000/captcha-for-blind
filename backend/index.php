@@ -349,6 +349,7 @@ if($captcha_type == 'touch') {
   // choose between press and swipe. If press ,chose a random no for num of touches between 1 and 5.
   $question = rand(0, 1);
   $no_of_presses = rand(1, 6);
+  
   if($lang == 'hi'){
     $t = "बार";
     if($question== 0) {
@@ -421,6 +422,7 @@ if($captcha_type == 'touch') {
   //lang_translate($lang);
 
   // set values
+  $_SESSION['touch_type'] = $question;
   $_SESSION['taps'] = $no_of_presses;
   $_SESSION['q_secret_audio'] = [$question_stmt];
   $_SESSION['q_secret_img'] = [$question_stmt];
@@ -549,6 +551,7 @@ if($captcha_type == 'pressure') {
   
   // set session values 
   $_SESSION['pressure_id'] = $pressure_type; 
+  $_SESSION['pressure_type'] = $question; 
   $_SESSION['q_secret_audio'] = [$pressure_type];
   $_SESSION['q_secret_img'] = [$pressure_type];
   $_SESSION['q_string'] = " | the given area"; 
