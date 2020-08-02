@@ -6,6 +6,7 @@ require '../helpers/add_switch_region.php';
 session_start();
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
 <script src= <?php echo $base_url ."js/changeRegion.js"?>/>
 <script src= <?php echo $base_url ."js/record.js"?>/>
@@ -18,9 +19,6 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   put_placeholder();
 }
 ?>
-
-<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
-
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <p><?php print $_SESSION["ins1"]; ?>
@@ -72,6 +70,8 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 <script>
   var base_url = "<?php echo $base_url; ?>";
   var is_open = "<?php echo $_SESSION['is_open']; ?>";
+  var lang = "<?php echo $_SESSION['lang']; ?>";
+  var region = "<?php echo $_SESSION['region']; ?>";
   var body = document.getElementsByClassName('ca-panel-body')[0];
   console.log(body);
   console.log(is_open);

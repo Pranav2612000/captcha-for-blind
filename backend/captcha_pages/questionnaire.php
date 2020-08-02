@@ -77,7 +77,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     console.log(is_open);
     console.log(!is_open);
     if(is_open == '0') {
-      console.log('hreer');
+      console.log('here');
       body.style.display="none";
     }
     var v = document.getElementById("valid");

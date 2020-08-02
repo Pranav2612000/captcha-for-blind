@@ -11,6 +11,12 @@ require '../config.php';
       <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=200"; ?> id="captcha_image" />
     </div>
     <button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>
+
+    <?php 
+      add_switch_language_elem("digit_recongnition");
+    ?>
+
+
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio()" autofocus/>
     <div>
       <audio id="valid">
