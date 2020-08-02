@@ -12,7 +12,7 @@ document.addEventListener("keydown", function(e) {
     case 79: //o - open captcha
       window.event.preventDefault();
       console.log("o");
-      toggleCaptcha();
+      toggleCaptcha(e);
       break;
 
     case 83: //s - swich que 
