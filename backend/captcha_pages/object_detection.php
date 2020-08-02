@@ -3,6 +3,8 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
+require '../helpers/add_buttons.php';
+
 session_start();
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
@@ -15,29 +17,25 @@ session_start();
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
-<?php 
-error_log($_SESSION['is_open']);
-if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
-  put_placeholder();
-}
-?>
+<script src= <?php echo $base_url ."js/buttons.js"?>/>
+
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <canvas id="ca-canvas"></canvas> 
-    <label class='ca-label'>Draw a </label>
+    <!--<label class='ca-label'>Draw a </label>-->
     <div class='ca-img-container'>
-      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=200"; ?> id="captcha_image" />
+      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=400"; ?> id="captcha_image" />
     </div>
-    <label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>
+    <!--<label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>-->
     <?php 
-      add_switch_language_elem();
+        add_buttons();
     ?>
 
-    <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
+    <!--<input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
     <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
     <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
-    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
+    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>-->
     <div>
       <audio id="valid">
         <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
@@ -55,6 +53,13 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
   </form>
 </div>
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
+
 
 <script>
 var base_url = "<?php echo $base_url; ?>";

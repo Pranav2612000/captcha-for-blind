@@ -1,10 +1,12 @@
+var audio;
+
 function play_ins(){
-  var audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+  audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
   audio.play();
 }
 function play_change_lang(){
-  var audio = new Audio( base_url + 'assets/audio/guides/lang_ins.mp3');
-  audio.play();
+  var audio_l = new Audio( base_url + 'assets/audio/guides/lang_ins.mp3');
+  audio_l.play();
 }
 
 var audio;
