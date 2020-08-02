@@ -22,6 +22,7 @@ session_start();
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
 <script src= <?php echo $base_url ."js/buttons.js"?>/>
 
+<div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <canvas id="ca-canvas"></canvas> 
@@ -61,10 +62,12 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   put_placeholder();
 }
 ?>
+</div>
 
 
 <script>
 var base_url = "<?php echo $base_url; ?>";
+var ended = true;
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
 console.log(body);
@@ -100,6 +103,9 @@ function setPosition(e) {
 }
 function setPositionAndClear(e) {
   setPosition(e);
+  if(ended == true) {
+    return;
+  }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 function bringCanvasFront() {
@@ -112,6 +118,9 @@ function takeCanvasBack() {
 }
 function stopDrawing(e) {
   console.log(e);
+  if(ended == true) {
+    return;
+  }
   if(canvas.style.zIndex == "-1") {
     return;
   }
@@ -140,12 +149,17 @@ function stopDrawing(e) {
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated</h3>");
         $('#canvas').hide();
         document.removeEventListener('mousemove', draw);
         document.removeEventListener('mousedown', setPositionAndClear);
         document.removeEventListener('mouseenter', setPosition);
         document.removeEventListener('mouseup', stopDrawing);
+        var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
+        placeholder.style.border = "4px solid green";
+        $('.ca-panel-body').hide(1000);
+        tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
+        $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
+        ended = true;
         //$('#register').attr('disabled', false);
       } else {
         i.play();
@@ -170,6 +184,9 @@ function resize() {
 }
 
 function draw(e) {
+  if(ended == true) {
+    return;
+  }
   if (e.buttons !== 1) return;
   if(isAButton(e.target)) {
     return;

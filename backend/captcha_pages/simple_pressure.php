@@ -63,6 +63,7 @@ var i = document.getElementById("invalid");
 var e = document.getElementById("enter"); 
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
+var ended = true;
 console.log(body);
 console.log(is_open);
 console.log(!is_open);
@@ -78,6 +79,7 @@ var s = 0;
 var block = {
   start: function(event){
     console.log(event);
+    console.log(in_scope);
     if(isAButton(event.target)) {
       return;
     }
@@ -88,12 +90,16 @@ var block = {
     if(in_scope == false) {
       return;
     }
+    if(ended == true) {
+      return;
+    }
     console.log('start', event);
     s = 0;
   },
 
   change: function(force, event){
     console.log(event);
+    console.log(in_scope);
     if(isAButton(event.target)) {
       return;
     }
@@ -101,6 +107,9 @@ var block = {
       return;
     }
     if(in_scope == false) {
+      return;
+    }
+    if(ended == true) {
       return;
     }
     // event.preventDefault();
@@ -112,6 +121,8 @@ var block = {
 
   startDeepPress: function(event){
     console.log(event);
+    console.log(in_scope);
+    
     if(isAButton(event.target)) {
       return;
     }
@@ -119,6 +130,9 @@ var block = {
       return;
     }
     if(in_scope == false) {
+      return;
+    }
+    if(ended == true) {
       return;
     }
     console.log('start deep press', event);
@@ -130,7 +144,6 @@ var block = {
   },*/
 	
    end: function(e){
-    console.log(e);
     /*
     if(isAButton(e.target)) {
       return;
@@ -138,6 +151,9 @@ var block = {
     */
     if(s == 0) {
       console.log('returing');
+      return;
+    }
+    if(ended == true) {
       return;
     }
     $.ajax({
@@ -155,6 +171,7 @@ var block = {
           $('.ca-panel-body').hide(1000);
           tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
           $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
+          ended = true;
           //$('#register').attr('disabled', false);
         } else {
           i.play();

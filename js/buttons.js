@@ -1,11 +1,16 @@
 var in_scope = true;
 function myFunction(e) {
     e.preventDefault();
+    e.stopPropagation();
     in_scope = false;
     document.getElementById("myDropdown").classList.toggle("show");
+    $('#myDropdown').show();
+    console.log(in_scope);
 }
 
-window.onclick = function(event) {
+document.onclick = function(event) {
+  console.log('undropping');
+  event.stopPropagation();
   if (!event.target.matches('#switch_lang')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     in_scope = true;

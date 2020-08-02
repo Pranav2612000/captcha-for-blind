@@ -105,9 +105,5 @@ document.addEventListener("keydown", function(e) {
       }
       changeLanguage_press(e,type, 'pa')
       break;
-
-
-
-  
   }
 });

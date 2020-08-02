@@ -21,13 +21,12 @@ require '../helpers/add_buttons.php';
 <div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <label class='ca-label'>Perform the following action</label>
     <div class='ca-img-container'>
       <img class='ca-img' id="captcha_image" />
     </div>
     <?php 
       add_buttons();
-      add_switch_language_elem();
+      //add_switch_language_elem();
     ?>
     <!-- TODO: Modularize -->
     <audio id="valid">
@@ -56,6 +55,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 <script>
 var base_url = "<?php echo $base_url; ?>";
 var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
+var ended = true;
 elem_width = elem_width.width;
 img_width = elem_width - 20;
 $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=40&width=" + img_width);
@@ -84,7 +84,12 @@ function sendRequest(value) {
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>"); //$('#register').attr('disabled', false);
+        var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
+        placeholder.style.border = "4px solid green";
+        $('.ca-panel-body').hide(1000);
+        tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
+        $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
+        ended = true;
       } else {
         i.play();
         alert("Unsuccessful validation");
@@ -124,6 +129,12 @@ $(document).ready(function(){
     if(isAButton(e.target))  {
       return;
     }
+    if(in_scope == false)  {
+      return;
+    }
+    if(ended == true) {
+      return;
+    }
     n = n + 1;
     clearTimeout(myVar);
     myVar = setTimeout(function() {
@@ -135,6 +146,15 @@ $(document).ready(function(){
   });
 
   manager.on('doubletap', function(e) {
+    if(isAButton(e.target))  {
+      return;
+    }
+    if(in_scope == false)  {
+      return;
+    }
+    if(ended == true) {
+      return;
+    }
     console.log('doubletap');
   });
 
@@ -142,6 +162,15 @@ $(document).ready(function(){
   var deltaY = 0;
 
   manager.on('swipe', function(e) {
+    if(isAButton(e.target))  {
+      return;
+    }
+    if(in_scope == false)  {
+      return;
+    }
+    if(ended == true) {
+      return;
+    }
     var direction = e.offsetDirection;
     console.log('swiping ' + direction);
     sendRequest("none");
