@@ -121,54 +121,66 @@ session_start();
   });
 </script>
 
-<div id=arrow></div>
+<div id='arrow'></div>
 <script>
-function isAInput(ele) {
-  var inputs = document.getElementsByTagName('input');
-  var inputs_array = [...inputs];
-  if (inputs_array.includes(ele)) {
-    return true;
-  } else {
-    return false;
+  function disp(str) {
+    //alert(str);
+    document.getElementById('arrow').innerHTML = str;
   }
-}
+  document.onkeydown = function(e) {
 
-function disp(str) {
-  //alert(str);
-  document.getElementById('arrow').innerHTML = str;
-}
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
+      window.event.preventDefault()
+        console.log( "You pressed CTRL + m");
+        $("#captcha_code").focus();
 
-document.addEventListener('keydown', function(e) {
-  console.log(e);
-  if(isAInput(e.target)) {
-    return;
-  }
-  if(e.keyCode == 65) {
-    console.log('a pressed');
-    $('#audio').focus();
-    return;
-  } 
-  if(e.keyCode == 87) {
-    console.log('left arraw pressed');
-    $("#captcha_code").focus();
-    return;
-  } 
-  if(e.keyCode == 69) {
-    console.log('right arrow pressed');
-    $("#submit").focus();
-    return;
-  } 
-  if(e.keyCode == 76) {
-    console.log('up pressed');
-    if($('#switch_lang')) {
-      $("#switch_lang").focus();
     }
-    return;
-  }
-  if(e.keyCode == 82) {
-    console.log('down pressed');
-    $('#voice_inp').focus();
-    return;
-  }
-}, true);
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
+      window.event.preventDefault()
+
+        console.log( "You pressed CTRL + y" );
+        $("#submit").click();
+
+    }
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
+      window.event.preventDefault()
+
+        console.log( "You pressed CTRL + u" );
+        $("#switch_lang").click();
+
+    }
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
+      window.event.preventDefault()
+
+        console.log( "You pressed CTRL + i" );
+        $('#voice_inp').click();
+
+    }
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
+      window.event.preventDefault()
+
+        console.log( "You pressed CTRL + v" );
+        $('#audio').click();
+
+    }
+    /*switch (window.event.keyCode) {
+      case 49: //left arrow
+        $("#captcha_code").focus();
+        break;
+      case 50: //left arrow
+        $("#submit").focus();
+        break;
+      case 51: //up arrow
+        $("#switch_lang").focus();
+        break;
+
+      case 52: //right key
+        $('#voice_inp').focus();
+        break;
+      case 53: //down key
+        $('#audio').focus();
+        break;
+
+    }*/
+  };
 </script>
