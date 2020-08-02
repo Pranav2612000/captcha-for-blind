@@ -17,9 +17,9 @@
     $q_secret = $_SESSION['q_secret_audio'];
 
     $txt = $q_string;
-    for($i = 0; $i < count($q_secret); $i++) {
+    /*for($i = 0; $i < count($q_secret); $i++) {
       $txt = str_replace_first("|", $q_secret[$i], $txt); 
-    }
+    }*/
     error_log($txt);
     
     /* Encode the input. */
@@ -34,22 +34,59 @@
             chmod($dir, 0777);
     }
 
-    echo $lang;
+    //echo $lang;
     /* Make the curl request to get audio file */
-    $curl = curl_init();
+    /*$curl = curl_init();
     curl_setopt_array($curl, [
       CURLOPT_RETURNTRANSFER => 1,
       CURLOPT_URL => 'https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q='.$txt.'&tl='.$lang.'-IN',
       CURLOPT_USERAGENT => 'Codular Sample cURL Request'
     ]);
     $html = curl_exec($curl);
-    curl_close($curl);
+    curl_close($curl);*/
 
     /* save the audio file */
-    file_put_contents($file, $html);
+    //file_put_contents($file, $html);
 
     $noise = $base_location . 'assets/sounds/guntrimmed.mp3';
-    $audio = $base_location . 'assets/audio/tts.wav';
+    $audio = $base_location . 'assets/audio/wav.wav';
+
+    /*if($lang == 'hi'){
+      if($txt == 'long press'){
+        $audio = $base_location . 'assets/audio/.wav';
+      } 
+      else if($txt == 'short press'){
+
+      }
+      else if($txt == 'short press'){
+
+      }
+      else if($txt == 'short press'){
+
+      }
+      
+    
+    }
+    else if($lang == 'gu'){
+        $player1= "<audio autoplay><source src=". $GLOBALS['base_url'] . "assets/sounds/guides/ins.mp3></audio>";
+        echo $player1;
+        return;
+    }
+    else if($lang == 'mr'){
+        $player1= "<audio autoplay><source src=". $GLOBALS['base_url'] . "assets/sounds/guides/ins1.mp3></audio>";
+        echo $player1;
+        return;
+    }
+    else if($lang == 'pa'){
+        $player1= "<audio autoplay><source src=". $GLOBALS['base_url'] . "assets/sounds/guides/ins2.mp3></audio>";
+        echo $player1;
+        return;
+    }
+    else {
+        $player1= "<audio autoplay><source src=". $GLOBALS['base_url'] . "assets/sounds/guides/ins3.mp3></audio>";
+        echo $player1;
+        return;
+    }*/
 
     
     $post_params['noise'] = $noise;
@@ -82,5 +119,4 @@
 
     /* send the file to client */
     $player1="<audio autoplay><source src='data:audio/mpeg;base64,".$html."'></audio>";
-	echo $player1;
-?>
+  echo $player1;
