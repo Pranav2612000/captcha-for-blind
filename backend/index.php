@@ -92,6 +92,58 @@ if($captcha_type == 'questionnaire') {
   // Choose a random question from array of questions
   $question = array_rand($questionnaire_arr);
 
+  //harded coded text 
+  if($lang == 'en') {
+    $ins1 = "Solve the question below and write your answer in the space provided below";
+    $ins2 = "Select the region";
+    $lang_switch = "Switch language";
+    $rec_ans = "Record Answer";
+    $audio = "Audio";
+    $check = "Check";
+
+  }
+  else if($lang == 'hi'){
+    $ins1 = "नीचे दिए गए प्रश्न को हल करें और नीचे दिए गए स्थान पर अपना उत्तर लिखें";
+    $ins2 = "क्षेत्र का चयन करें";
+    $lang_switch = "भाषा अनुवाद";
+    $rec_ans = "आवाज़ डालना";
+    $audio = "आवाज़";
+    $check = "उत्तर";
+  }
+  else if($lang == 'gu'){
+    $ins1 = "નીચેનો પ્રશ્ન ઉકેલો અને નીચે આપેલ જગ્યામાં તમારા જવાબો લખો";
+    $ins2 = "પ્રદેશ પસંદ કરો";
+    $lang_switch = "ભાષા અનુવાદ";
+    $rec_ans = "વ .ઇસ ઇનપુટ";
+    $audio = "અવાજ";
+    $check = "જવાબ";
+  }
+  else if($lang == 'mr'){
+    $ins1 = "खाली प्रश्न सोडवा आणि खाली उत्तर दिलेल्या जागेवर आपले उत्तर लिहा";
+    $ins2 = "प्रदेश निवडा";
+    $lang_switch = "भाषा बदल";
+    $rec_ans = "इनपुट आवाज";
+    $audio = "आवाज";
+    $check = "उत्तर";
+  }
+  else if($lang == 'bn'){
+    $ins1 = "নীচের প্রশ্নটি সমাধান করুন এবং নীচের প্রদত্ত স্থানটিতে আপনার উত্তর লিখুন";
+    $ins2 = "অঞ্চলটি নির্বাচন করুন";
+    $lang_switch = "ভাষা অনুবাদ";
+    $rec_ans = "ইনপুট ভয়েস";
+    $audio = "কণ্ঠস্বর";
+    $check = "উত্তর";
+  }
+  else if($lang == 'pa'){
+    $ins1 = "ਹੇਠਾਂ ਦਿੱਤੇ ਪ੍ਰਸ਼ਨ ਦਾ ਹੱਲ ਕਰੋ ਅਤੇ ਹੇਠਾਂ ਦਿੱਤੀ ਜਗ੍ਹਾ ਵਿੱਚ ਆਪਣੇ ਉੱਤਰ ਲਿਖੋ";
+    $ins2 = "ਖੇਤਰ ਦੀ ਚੋਣ ਕਰੋ";
+    $lang_switch = "ਭਾਸ਼ਾ ਅਨੁਵਾਦ";
+    $rec_ans = "ਇੰਪੁੱਟ ਆਵਾਜ਼";
+    $audio = "ਆਵਾਜ਼";
+    $check = "ਜਵਾਬ";
+
+  }
+
   // Break into comma seperated individual words to improve translation
   $text_to_be_translated = implode(",", explode("\n", $question)); 
 
@@ -105,6 +157,16 @@ if($captcha_type == 'questionnaire') {
   $_SESSION['q_secret_img'] = [$translated_text];
   $_SESSION['q_secret_audio'] = [$translated_text];
   $_SESSION['answer'] = $answer; 
+  $_SESSION['ins1'] = $ins1;
+  $_SESSION['ins2'] = $ins2;
+  $_SESSION['lang_switch'] = $lang_switch;
+  $_SESSION['rec_ans'] = $rec_ans;
+  $_SESSION['audio'] = $audio;
+  $_SESSION['check'] = $check;
+
+
+  
+  
 
   // Send corresponding captcha page to client
   header('Location: '.'./captcha_pages/questionnaire.php');
@@ -160,6 +222,41 @@ if($captcha_type == 'word_chain') {
   $_SESSION['q_secret_audio'] = [$word, $yes, $no, $stmt];
   #$_SESSION['q_string'] = "If | is present in given statement then press | else press | . The words are | "; 
   $_SESSION['q_string'] = getWordChainQuestion($lang); 
+
+
+  //hardcoded text translate
+  if($lang == 'en') {
+    $ins1 = "If";
+    $ins2 = "is present in given statement, then press";
+    $ins3 = "else, press";
+    $ins4 = "The words are:";
+    $lang_switch = "Switch language";
+    $rec_ans = "Record Answer";
+    $audio = "Audio";
+    $check = "Check";
+
+  }
+  else if($lang == 'hi'){
+    $ins1 = "अगर";
+    $ins2 = "दिए गए कथन में मौजूद है, फिर दबाएँ";
+    $ins3 = "और, दबाओ";
+    $ins4 = "शब्द हैं";
+    $lang_switch = "भाषा अनुवाद";
+    $rec_ans = "आवाज़ डालना";
+    $audio = "आवाज़";
+    $check = "उत्तर";
+  }
+
+  $_SESSION['ins1'] = $ins1;
+  $_SESSION['ins2'] = $ins2;
+  $_SESSION['ins3'] = $ins3;
+  $_SESSION['ins4'] = $ins4;
+  $_SESSION['lang_switch'] = $lang_switch;
+  $_SESSION['rec_ans'] = $rec_ans;
+  $_SESSION['audio'] = $audio;
+  $_SESSION['check'] = $check;
+
+ 
 
   // Send corresponding captcha page to client
   header('Location: '.'./captcha_pages/word_chain.php');

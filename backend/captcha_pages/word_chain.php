@@ -1,5 +1,7 @@
 <?php
 require '../config.php';
+session_start();
+
 ?>
 <link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
@@ -7,29 +9,29 @@ require '../config.php';
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <p>If
+    <p><?php print $_SESSION["ins1"]; ?>
       <div class='ca-img-container'>
         <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=200&height=48"; ?> id="captcha_image" />
       </div>
-      is present in given statement, then press
+      <?php print $_SESSION["ins2"]; ?>
       <div class='ca-img-container'>
         <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=1&width=130&height=38"; ?> id="yes" />
       </div>
-      else, press
+      <?php print $_SESSION["ins3"]; ?>
       <div class='ca-img-container'>
         <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=2&width=130&height=38"; ?> id="no" />
       </div>
-      . The words are:
+      <?php print $_SESSION["ins4"]; ?>
     </p>
     <div class='ca-img-container'>
       <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=3&width=300&height=400"; ?> id="stmt" />
     </div>
-    <label>Write your Answer</label>
+    <label></label>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" />
-    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')">Switch language</button>
-    <button class='ca-button' id='voice_inp' onclick="record(event)">Record Answer</button>
-    <input class='ca-button' type="button" name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus />
-    <input class='ca-button' type="submit" name="register" id="submit" value="Check" />
+    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')"><?php print $_SESSION["lang_switch"]; ?></button>
+    <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
+    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus ><?php print $_SESSION["audio"]; ?></button>
+    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
     <!-- TODO: Modularize -->
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">

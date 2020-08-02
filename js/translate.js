@@ -5,7 +5,7 @@ function changeLanguage(e, type) {
    url:"../backend/index.php",
    method:"POST",
    data:{"captcha_type" : type,
-         "lang" : "hi"
+         "lang" : document.getElementById("lang").value
         },
    success:function(data) {
      jQuery('#captcha').html(data);
