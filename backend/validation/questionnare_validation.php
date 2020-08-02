@@ -12,7 +12,8 @@ $code = $_POST['code'];
 $percent = 0;
 $sim = similar_text($answer, $code, $percent);
 if(strcasecmp($answer, $code) == 0 || $percent >= 70.00){
-	echo 'success';	
+  header('Location: '.'../index.php');
+  die();
 } else {
 	echo 'failure';
 }

@@ -79,7 +79,6 @@ else {
     $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.ttf';  
 }
 
-echo $font;
 /*$randomBgColor = rand(0,1);
 if($randomBgColor == 0)
     $randomNumberForBg = rand(1,6); 
