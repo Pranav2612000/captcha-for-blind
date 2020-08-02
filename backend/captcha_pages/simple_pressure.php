@@ -3,6 +3,7 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
+require '../helpers/add_buttons.php';
 ?>
 <script type="text/javascript" src="../dependencies/pressure-master/dist/pressure.js"></script>
 <script type="text/javascript" src="../dependencies/pressure-master/dist/jquery.pressure.js"></script>
@@ -27,17 +28,12 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <label class='ca-label'>Pressure Captcha</label>
+    <!--<label class='ca-label'>Pressure Captcha</label>-->
     <div class='ca-img-container'>
       <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=40"; ?> id="captcha_image" />
     </div>
-    <button id="audio" class="ca-button" onclick="getAudio(event)">Audio</button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
-    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'pressure')">Switch language</button>
-
-    <?php 
+    <?php
+      add_buttons();
       add_switch_language_elem("pressure");
     ?>
 
@@ -52,7 +48,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     <audio id="invalid">
       <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
     </audio>       
-    <div id="player"></div>
+    <div id="ca-player"></div>
   </form>
 </div>
 
@@ -83,6 +79,10 @@ var block = {
     if(isAButton(event.target)) {
       return;
     }
+    console.log(is_open);
+    if(is_open == '0') {
+      return;
+    }
     console.log('start', event);
     s = 0;
   },
@@ -90,6 +90,9 @@ var block = {
   change: function(force, event){
     console.log(event);
     if(isAButton(event.target)) {
+      return;
+    }
+    if(is_open == '0') {
       return;
     }
     // event.preventDefault();
@@ -102,6 +105,9 @@ var block = {
   startDeepPress: function(event){
     console.log(event);
     if(isAButton(event.target)) {
+      return;
+    }
+    if(is_open == '0') {
       return;
     }
     console.log('start deep press', event);
@@ -133,7 +139,7 @@ var block = {
         if(data == 'success') {
           v.play();
           alert("Successful Validation");
-          $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated</h3>");
+          $('.ca-placeholder-body').html("<h3 class='ca-validated'> Captcha Validated</h3>");
           //$('#register').attr('disabled', false);
         } else {
           i.play();

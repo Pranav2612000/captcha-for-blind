@@ -3,6 +3,7 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
+require '../helpers/add_buttons.php';
 ?>
 <script type="text/javascript" src=<?php echo $base_url . "js/hammer.js"?>></script>
 <link rel="stylesheet" href=<?php echo $base_url . "css/touch.css"?>>
@@ -28,15 +29,11 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <img class='ca-img' id="captcha_image" />
     </div>
     <!--<div class="touch-sensor" style="height:200px;width:400px;background:lightblue"></div>-->
-    <label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>
+    <!--<label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>-->
     <?php 
-      add_switch_language_elem("touch");
+      add_buttons();
+      add_switch_language_elem();
     ?>
-    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio(event)" autofocus ><?php print $_SESSION["audio"]; ?></button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
-    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
-
     <!-- TODO: Modularize -->
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
@@ -49,7 +46,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     <audio id="invalid">
       <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
     </audio>       
-    <div id="player">
+    <div id="ca-player">
     </div>
   </form>
 </div>

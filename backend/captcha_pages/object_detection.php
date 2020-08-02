@@ -50,7 +50,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <audio id="invalid">
         <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
       </audio>       
-      <div id="player">
+      <div id="ca-player">
       </div>
     </div>
   </form>
