@@ -1,6 +1,7 @@
 var in_scope = true;
 function myFunction(e) {
     e.preventDefault();
+    e.stopPropagation();
     in_scope = false;
     document.getElementById("myDropdown").classList.toggle("show");
     $('#myDropdown').show();

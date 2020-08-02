@@ -127,6 +127,9 @@ $(document).ready(function(){
     if(isAButton(e.target))  {
       return;
     }
+    if(in_scope == false)  {
+      return;
+    }
     n = n + 1;
     clearTimeout(myVar);
     myVar = setTimeout(function() {
@@ -141,6 +144,9 @@ $(document).ready(function(){
     if(isAButton(e.target))  {
       return;
     }
+    if(in_scope == false)  {
+      return;
+    }
     console.log('doubletap');
   });
 
@@ -149,6 +155,9 @@ $(document).ready(function(){
 
   manager.on('swipe', function(e) {
     if(isAButton(e.target))  {
+      return;
+    }
+    if(in_scope == false)  {
       return;
     }
     var direction = e.offsetDirection;
