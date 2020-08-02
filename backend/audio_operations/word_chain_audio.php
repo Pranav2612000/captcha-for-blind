@@ -34,7 +34,6 @@
             chmod($dir, 0777);
     }
 
-    //echo $lang;
     /* Make the curl request to get audio file */
     /*$curl = curl_init();
     curl_setopt_array($curl, [

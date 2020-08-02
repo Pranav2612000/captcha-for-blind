@@ -14,6 +14,7 @@ session_start();
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
+<script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -49,7 +50,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <audio id="invalid">
         <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
       </audio>       
-      <div id="player">
+      <div id="ca-player">
       </div>
     </div>
   </form>

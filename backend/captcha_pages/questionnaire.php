@@ -3,8 +3,6 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
-require '../helpers/guide_open_cap.php';
-
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -23,6 +21,7 @@ require '../helpers/guide_open_cap.php';
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
+<script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -33,11 +32,6 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   <form method="post" id="captcha_form">
     <label class='ca-label'><?php print $_SESSION["ins2"]; ?></label>
     <label class='ca-label'><?php print $_SESSION["ins1"]; ?></label>
-
-    <?php 
-      guide_to_open_captcha();
-    ?>
-
     <?php 
       add_switch_region_elem();
     ?>
