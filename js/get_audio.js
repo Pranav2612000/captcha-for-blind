@@ -1,6 +1,7 @@
 function getAudio(e) {
   e.preventDefault();
-  var txt = jQuery('#txt').val()
+  console.log("in get audio")
+  //var txt = jQuery('#txt').val()
   jQuery.ajax({
     //url:'../audio_operations/questionnaire_audio.php',
     //url:'http://localhost/captcha-alternative/backend/audio_operations/questionnaire_audio.php',

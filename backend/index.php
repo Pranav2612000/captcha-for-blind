@@ -1,6 +1,7 @@
 <?php
 
 require './translate.php';
+//require './helpers/lang_trans.php';
 // Report all errors
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
@@ -66,6 +67,13 @@ $pressure_arr= array("short press", "long press");
 $word_chain_arr = array("dog", "cat", "cow", "sheep", "lion", "tiger", "monkey", "donkey", "hibiscus", "tulip", "rose", "lotus", "sunflower", "apple", "lemon", "orange", "fig", "grapes", "banana", "kiwi", "peach", "potato", "spinach", "mushroom", "cabbage", "beetroot", "corn", "carrot", "plum", "apricot", "broccoli", "cauliflower", "olive", "sun", "moon", "venus", "mercury", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "january", "february", "march", "april", "may", "june", "july", "september", "october", "november", "december", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "is", "are", "was", "were", "will", "animal", "flower", "fruit", "flower", "planet", "month");
 
 $touch_array = array("press", "swipe");
+$touch_array_hi = array("दबाएँ", "टचपैड पर हाथ ले जाएं");
+$touch_array_gu = array("દબાવો", "ટચપેડ પર હાથ ખસેડો");
+$touch_array_mr = array("दाबा", "टचपॅडवर हात हलवा");
+$touch_array_bn = array("প্রেস", "টাচপ্যাডে হাত সরিয়ে দিন");
+$touch_array_pa = array("ਪ੍ਰੈਸ", "ਟਚਪੈਡ 'ਤੇ ਹੱਥ ਭੇਜੋ");
+
+
 
 
 function getUniqueRandomNumbersWithinRange($min, $max, $quantity) {
@@ -339,24 +347,83 @@ if($captcha_type == 'word_chain') {
 // Touch Captcha
 if($captcha_type == 'touch') {
   // choose between press and swipe. If press ,chose a random no for num of touches between 1 and 5.
-  $question = array_rand($touch_array);
-  if($question== 0) {
-    $no_of_presses = rand(1, 6);
-    //$no_of_presses = 5;
-    $question_stmt = $touch_array[$question] . " " . $no_of_presses . " times";
-  } else {
-    $question_stmt = $touch_array[$question]; 
-    $no_of_presses = "none";
+  $question = rand(0, 1);
+  $no_of_presses = rand(1, 6);
+  if($lang == 'hi'){
+    $t = "बार";
+    if($question== 0) {
+      $question_stmt = $touch_array_hi[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array_hi[$question]; 
+      $no_of_presses = "none";
+    }
+
+  }
+  else if($lang == 'gu'){
+    $t = "વખત";
+    if($question== 0) {
+      $question_stmt = $touch_array_gu[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array_gu[$question]; 
+      $no_of_presses = "none";
+    }
+
+  }
+  else if($lang == 'mr'){
+    $t = "वेळा";
+    if($question== 0) {
+      $question_stmt = $touch_array_mr[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array_mr[$question]; 
+      $no_of_presses = "none";
+    }
+
+  }
+  else if($lang == 'bn'){
+    $t = "বার";
+    if($question== 0) {
+      $question_stmt = $touch_array_bn[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array_bn[$question]; 
+      $no_of_presses = "none";
+    }
+  }
+  else if($lang == 'pa'){
+    $t = "ਵਾਰ";
+    if($question== 0) {
+      $question_stmt = $touch_array_pa[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array_pa[$question]; 
+      $no_of_presses = "none";
+    }
+
+  }
+  else{
+    $t = "times";
+    if($question== 0) {
+      $question_stmt = $touch_array[$question] . " " . $no_of_presses . $t;
+    }
+    else {
+      $question_stmt = $touch_array[$question]; 
+      $no_of_presses = "none";
+    }
+  
   }
 
   // translate the text by converting to csv first
-  $text_to_be_translated = implode(",", explode("\n", $question_stmt)); 
-  $translated_text = implode("\n", explode(",", translate($text_to_be_translated, $lang))); 
+  //$text_to_be_translated = implode(",", explode("\n", $question_stmt)); 
+  //$translated_text = implode("\n", explode(",", translate($text_to_be_translated, $lang))); 
+  //lang_translate($lang);
 
   // set values
   $_SESSION['taps'] = $no_of_presses;
-  $_SESSION['q_secret_audio'] = [$translated_text];
-  $_SESSION['q_secret_img'] = [$translated_text];
+  $_SESSION['q_secret_audio'] = [$question_stmt];
+  $_SESSION['q_secret_img'] = [$question_stmt];
   $_SESSION['q_string'] = "Perform the following | "; 
 
   // send page to client
@@ -386,8 +453,100 @@ if($captcha_type == 'pressure') {
 
   //choose a random type of question
   $question = array_rand($pressure_arr);
-  $pressure_type = translate($pressure_arr[$question], $lang);
+  //$pressure_type = translate($pressure_arr[$question], $lang);
+  /*if($lang == 'hi'){
+    if($question == 0){
+      $pressure_type = 'कम तक दबाना';
+    } 
+    else if($question == 1){
+      $pressure_type = 'देर तक दबाना';
+    }
+  
+  }*/
+  /*else if($lang == 'gu'){
+    if($question == 'long press'){
+      $pressure_type = '';
+    } 
+    else if($txt == 'short press'){
+      $pressure_type = '';
+    } 
+  }
+  else if($lang == 'mr'){
+    if($question == 'long press'){
+      $pressure_type = '';
+    } 
+    else if($txt == 'short press'){
+      $pressure_type = '';
+    }
 
+  }
+  else if($lang == 'pa'){
+    if($question == 'long press'){
+      $pressure_type = '';
+    } 
+    else if($txt == 'short press'){
+      $pressure_type = '';
+    }
+  }*/
+  /*else {
+    if($question == 0){
+      $pressure_type = 'short press';
+    } 
+    else if($txt == 1){
+      $pressure_type = 'long press';
+    }
+  }*/
+
+  
+  if($lang == 'hi'){
+    if($question == 0){
+        $pressure_type = 'धीमा तक दबाना';
+    }
+    else{
+      $pressure_type = 'देर तक दबाना';
+    } 
+  }
+  else if($lang == 'gu'){
+    if($question == 0){
+        $pressure_type = 'ધીમું પ્રેસ';
+    }
+    else{
+      $pressure_type = 'લાંબા પ્રેસ';
+    } 
+  }
+  else if($lang == 'mr'){
+    if($question == 0){
+        $pressure_type = 'मंद दाबा';
+    }
+    else{
+      $pressure_type = 'लांब दाबा';
+    } 
+  }
+  else if($lang == 'bn'){
+    if($question == 0){
+        $pressure_type = 'ধীর চাপ';
+    }
+    else{
+      $pressure_type = 'দীর্ঘ চাপ';
+    } 
+  }
+  else if($lang == 'pa'){
+    if($question == 0){
+        $pressure_type = 'ਹੌਲੀ ਪ੍ਰੈਸ';
+    }
+    else{
+      $pressure_type = 'ਲੰਬੇ ਪ੍ਰੈਸ';
+    } 
+  }
+  else{
+    if($question == 0){
+      $pressure_type = 'short press';
+    }
+    else{
+      $pressure_type = 'long press';
+    }
+  }
+  
   // set session values 
   $_SESSION['pressure_id'] = $pressure_type; 
   $_SESSION['q_secret_audio'] = [$pressure_type];

@@ -36,5 +36,29 @@ document.addEventListener("keydown", function(e) {
       $('#audio').click();
       break;
 
+    /*case 89: //y
+    window.event.preventDefault();
+    console.log("y");
+      $("#submit").click();
+      break;
+    
+    case 76: //l
+    window.event.preventDefault();
+    console.log("l");
+      $("#switch_lang").click();
+      break;
+
+    case 73: //i
+    window.event.preventDefault();
+    console.log("i");
+      $('#voice_inp').click();
+      break;
+    
+    case 65: //a
+    window.event.preventDefault();
+    console.log("a");
+      $('#audio').click();
+      break;*/
+
   }
 });
