@@ -7,8 +7,18 @@
   text-align: center;
   color: gray;
 }
+
 .ca-placeholder-body {
-  border: 2px solid green;
+  border: 4px solid green;
+  background-color:  white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 40px;
+  padding-top: 20px;
+}
+#view-text {
+  display: block;
+  text-align: center;
 }
 
 #captcha_form {
@@ -20,6 +30,7 @@
 .ca-form-group {
     color: gray;
 }
+
 .ca-img-container {
   margin-top: 10px;
   margin-bottom: 10px;
