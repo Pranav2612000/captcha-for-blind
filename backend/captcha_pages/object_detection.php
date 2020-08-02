@@ -29,7 +29,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
     <label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>
     <?php 
-      add_switch_language_elem("object_detection");
+      add_switch_language_elem();
     ?>
 
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
