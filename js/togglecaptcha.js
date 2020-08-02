@@ -6,6 +6,5 @@ function toggleCaptcha() {
   if (captcha_body.style.display === "none") {
     captcha_body.style.display = "block";
     placeholder.style.display = "none";
-
   }
 }
