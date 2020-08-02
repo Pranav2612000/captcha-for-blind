@@ -9,7 +9,7 @@ session_start();
 
 $lang = "en";
 $is_open = "0";
-$region = "maha";
+$region = "default";
 
 if(isset($_POST['lang'])) {
   $lang = $_POST['lang'];

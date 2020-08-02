@@ -1,7 +1,6 @@
 <?php
 require '../config.php';
 require '../helpers/add_placeholder.php';
-session_start();
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

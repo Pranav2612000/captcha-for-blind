@@ -6,6 +6,10 @@
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   color: gray;
+  background-color: rgba(240, 235,193, 0.9);
+  position: fixed;
+  top: 0px;
+  border-radius: 10px;
 }
 
 .ca-placeholder-body {
