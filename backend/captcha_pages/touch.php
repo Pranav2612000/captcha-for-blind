@@ -15,13 +15,10 @@ require '../helpers/add_buttons.php';
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
-<?php 
-error_log($_SESSION['is_open']);
-if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
-  put_placeholder();
-}
-?>
+<script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
+<script src= <?php echo $base_url ."js/buttons.js"?>/>
 
+<div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <label class='ca-label'>Perform the following action</label>
@@ -49,6 +46,13 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     <div id="ca-player">
     </div>
   </form>
+</div>
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
 </div>
 
 <script>
