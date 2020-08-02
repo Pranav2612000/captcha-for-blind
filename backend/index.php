@@ -66,7 +66,7 @@ if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
 }
 if(isset($_POST['captcha_type'] )) {
   $captcha_type = $_POST['captcha_type'];
-  echo "redirectign to " . $captcha_type;
+  echo "redirecting to " . $captcha_type;
 } else{
   $randcaptcha = rand(0,2);
   if($randcaptcha == 0){ //audio

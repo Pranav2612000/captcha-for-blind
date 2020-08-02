@@ -4,6 +4,7 @@ require '../config.php';
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
+<script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
@@ -162,16 +163,6 @@ function draw(e) {
   ctx.stroke(); // draw it!
 }
 
-function isAButton(ele) {
-  console.log(ele);
-  var buttons = document.getElementsByClassName('ca-button');
-  var buttons_array = [...buttons];
-  if (buttons_array.includes(ele)) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 </script>
 
