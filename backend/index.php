@@ -81,8 +81,9 @@ function getElement($index) {
 if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
   echo "Validated";
 }
-if(isset($_POST['captcha_type'] )) {
+if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
   $captcha_type = $_POST['captcha_type'];
+  $_SESSION['captcha_type'] = $captcha_type;
   echo "redirecting to " . $captcha_type;
 } else{
   $randcaptcha = rand(0,2);
@@ -115,7 +116,7 @@ if(isset($_POST['captcha_type'] )) {
       $captcha_type = 'object_detection';
     }
   }
-  
+  $_SESSION['captcha_type'] = "random";
 }
 
 // Simple Captcha
