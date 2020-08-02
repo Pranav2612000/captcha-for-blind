@@ -1,8 +1,14 @@
+
 document.addEventListener("keydown", function(e) {
   if(isAInput(e.target)) {
     return;
   }
   switch (window.event.keyCode) {
+    case 79:
+      window.event.preventDefault();
+      console.log("w");
+      toggleCaptcha();
+      break;  
     case 87: //w
     window.event.preventDefault();
       console.log("w");
