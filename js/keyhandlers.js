@@ -1,64 +1,98 @@
 
 document.addEventListener("keydown", function(e) {
+  function rand(min, max) {
+    let randomNum = Math.random() * (max - min) + min;
+    return Math.round(randomNum);
+ }
+
   if(isAInput(e.target)) {
     return;
   }
   switch (window.event.keyCode) {
-    case 79:
+    case 83: //s - swich que 
       window.event.preventDefault();
-      console.log("w");
-      toggleCaptcha();
+      console.log("s");
+      var x = rand(1, 2);
+      if(x == 1){
+        switchCaptcha(window.event, "gesture");
+      }
+      else if(x == 2){
+        switchCaptcha(window.event, "pressure");
+      }
       break;  
-    case 87: //w
-    window.event.preventDefault();
-      console.log("w");
-      $("#captcha_code").focus();
+    case 76: //l - change lang
+      window.event.preventDefault();
+      console.log("l");
+      play_change_lang();
       break;
-    case 89: //y
-    window.event.preventDefault();
-    console.log("y");
-      $("#submit").click();
-      break;
-    case 76: //l
-    window.event.preventDefault();
-    console.log("l");
-      $("#switch_lang").click();
+    case 82: //r - repeat ins 
+      window.event.preventDefault();
+      console.log("r");
+      play_ins();
       break;
 
-    case 73: //i
-    window.event.preventDefault();
-    console.log("i");
-      $('#voice_inp').click();
+    case 69: //e - eng
+      window.event.preventDefault();
+      var x = rand(1, 2);
+      if(x == 1){
+        type = "gesture"
+      }
+      else{
+        type = "pressure"
+      }
+      changeLanguage_press(e,type, 'en')
       break;
-    case 65: //a
-    window.event.preventDefault();
-    console.log("a");
-      $('#audio').click();
-      break;
-
-    /*case 89: //y
-    window.event.preventDefault();
-    console.log("y");
-      $("#submit").click();
+      
+    case 72: //h - hindi
+      window.event.preventDefault();
+      var x = rand(1, 2);
+      if(x == 1){
+        type = "gesture"
+      }
+      else{
+        type = "pressure"
+      }
+      changeLanguage_press(e,type, 'hi')
       break;
     
-    case 76: //l
-    window.event.preventDefault();
-    console.log("l");
-      $("#switch_lang").click();
+    case 71: //g - guj
+      window.event.preventDefault();
+      var x = rand(1, 2);
+      if(x == 1){
+        type = "gesture"
+      }
+      else{
+        type = "pressure"
+      }
+      changeLanguage_press(e,type, 'gu')
       break;
 
-    case 73: //i
-    window.event.preventDefault();
-    console.log("i");
-      $('#voice_inp').click();
+    case 77: //m - marathi
+      window.event.preventDefault();
+      var x = rand(1, 2);
+      if(x == 1){
+        type = "gesture"
+      }
+      else{
+        type = "pressure"
+      }
+      changeLanguage_press(e,type, 'mr')
       break;
-    
-    case 65: //a
-    window.event.preventDefault();
-    console.log("a");
-      $('#audio').click();
-      break;*/
+      
+    case 80: //p - panjabi
+      window.event.preventDefault();
+      var x = rand(1, 2);
+      if(x == 1){
+        type = "gesture"
+      }
+      else{
+        type = "pressure"
+      }
+      changeLanguage_press(e,type, 'pa')
+      break;
 
+
+
+  
   }
 });

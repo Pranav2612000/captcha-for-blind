@@ -1,3 +1,11 @@
+function play_ins(){
+  var audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+  audio.play();
+}
+function play_change_lang(){
+  var audio = new Audio( base_url + 'assets/audio/guides/lang_ins.mp3');
+  audio.play();
+}
 
 function toggleCaptcha() {
   console.log('opening');
@@ -8,8 +16,8 @@ function toggleCaptcha() {
     placeholder.style.borderTop = "none";
     captcha_body.style.display = "block";
     //placeholder.style.display = "none";
-    var audio = new Audio( base_url + 'assets/sounds/guides/ins.mp3');
-    audio.play();
+    play_ins();
   }
+
  
 }

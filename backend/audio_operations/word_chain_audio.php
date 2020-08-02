@@ -47,8 +47,48 @@
     /* save the audio file */
     //file_put_contents($file, $html);
 
+    $captcha_type = $_SESSION['captcha_type'];
+    $q = $_SESSION['pressure_type'];
+    $touch_type = $_SESSION['touch_type'];
+    $taps = $_SESSION['taps']; //1 to 6
+    $shape_id = $_SESSION['shape_id']; //1 to 6
+    $num = $_SESSION['answer'];
+
+
     $noise = $base_location . 'assets/sounds/guntrimmed.mp3';
-    $audio = $base_location . 'assets/audio/wav.wav';
+
+
+    if($captcha_type == 'pressure'){
+      if($q == 0){ //short
+        $audio = $base_location . 'assets/audio/audios/ShortPress/'.$lang.'/shortPress.mp3';
+      }
+      else{ //long
+        $audio = $base_location . 'assets/audio/audios/LongPress/'.$lang.'/LongPress.mp3';
+      }
+    }
+    else if($captcha_type == 'touch'){
+      if($touch_type == 0){ //press
+          $audio = $base_location . 'assets/audio/audios/presstime/'.$lang.'/'.$taps.'.mp3';
+      }
+      else if($touch_type == 1){ //swipe
+        $audio = $base_location . 'assets/audio/audios/swipe/'.$lang.'/swipe.mp3';
+      }
+    }
+    else if($captcha_type == 'object_detection'){
+      if($shape_id == 0) { //circle 
+        $audio = $base_location . 'assets/audio/audios/circle/'.$lang.'/ci.mp3';
+      }
+      else if($shape_id == 1) { //triangle
+        $audio = $base_location . 'assets/audio/audios/tri/'.$lang.'/tri.mp3'; 
+      }
+      else if($shape_id == 2) { //square
+        $audio = $base_location . 'assets/audio/audios/reactangle/'.$lang.'/re.mp3'; 
+      }
+
+    }
+    else if($captcha_type == 'digit_recognition'){
+      $audio = $base_location . 'assets/audio/audios/Digits/'.$lang.'/'.$num.'.mp3';
+    }
 
     /*if($lang == 'hi'){
       if($txt == 'long press'){
