@@ -38,10 +38,8 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <img class="ca-img" id="captcha_image" />
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"></button>
-
     <?php 
-      add_switch_language_elem("questionnaire");
+      add_switch_language_elem();
     ?>
 
     <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
@@ -121,26 +119,6 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
 <div id=arrow></div>
 <script>
-  function disp(str) {
-    //alert(str);
-    document.getElementById('arrow').innerHTML = str;
-    document.onkeydown = function() {
-      switch (window.event.keyCode) {
-        case 38:
-          $("input:text").focus();
-          break;
-
-        case 39:
-          $('#register').focus();
-          break;
-
-        case 40:
-          $('#audio').focus();
-          break;
-
-      }
-    }
-  };
 </script>
 <script type="text/javascript">
 

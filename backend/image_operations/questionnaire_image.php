@@ -78,8 +78,10 @@ else {
     $font = dirname(__FILE__) . '/../../assets/fonts/0/font0.ttf'; 
 
     # 0 - simple, 1 - distored
+    error_log("in english");
     $randtype = rand(0, 1);
-    if($randtype == 0){
+    //if($randtype == 0){
+    if(true) {
         $randomNumber = rand(0,29); 
         $font = dirname(__FILE__) . '/../../assets/fonts/0/font' . $randomNumber . '.ttf';  
     }
@@ -94,7 +96,6 @@ else {
             $font = dirname(__FILE__) . '/../../assets/fonts/1/ttf/font' . $randt . '.ttf';  
         }
     }
-    
 }
 
 /*$randomBgColor = rand(0,1);

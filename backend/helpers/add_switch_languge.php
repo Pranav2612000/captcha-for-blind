@@ -1,8 +1,9 @@
 <?php
-function add_switch_language_elem($captcha_type) {
+session_start();
+function add_switch_language_elem() {
   echo "
     <div>
-      <select name='lang' id='lang' onchange='changeLanguage(event,\"" . $captcha_type . "\")'>
+      <select name='lang' id='lang' onchange='changeLanguage(event,\"" . $_SESSION['captcha_type'] . "\")'>
         <option value='en' >English</option>
         <option value='hi'>Hindi</option>
         <option value='gu'>Gujarati</option>
