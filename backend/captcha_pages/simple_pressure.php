@@ -1,5 +1,8 @@
 <?php
 require '../config.php';
+require '../helpers/add_placeholder.php';
+require '../helpers/add_switch_languge.php';
+require '../helpers/add_switch_region.php';
 ?>
 <script type="text/javascript" src="../dependencies/pressure-master/dist/pressure.js"></script>
 <script type="text/javascript" src="../dependencies/pressure-master/dist/jquery.pressure.js"></script>
@@ -7,6 +10,17 @@ require '../config.php';
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
+<script src= <?php echo $base_url ."js/changeRegion.js"?>/>
+<script src= <?php echo $base_url ."js/record.js"?>/>
+<script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
+<script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
+<script src= <?php echo $base_url ."js/get_audio.js"?>/>
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
@@ -39,37 +53,18 @@ var base_url = "<?php echo $base_url; ?>";
 var v = document.getElementById("valid"); 
 var i = document.getElementById("invalid"); 
 var e = document.getElementById("enter"); 
+var is_open = "<?php echo $_SESSION['is_open']; ?>";
+var body = document.getElementsByClassName('ca-panel-body')[0];
+console.log(body);
+console.log(is_open);
+console.log(!is_open);
+if(is_open == '0') {
+  console.log('hreer');
+  body.style.display="none";
+}
 $.pressureConfig({
   polyfill: false
 });
-
-function getAudio(e){
-  e.preventDefault();
-  e.stopPropagation();
-  var txt=jQuery('#txt').val();
-  jQuery.ajax({
-      /*url:'../audio_operations/word_chain_audio.php',*/
-      url: base_url + "backend/audio_operations/word_chain_audio.php", 
-      type:'post',
-      success:function(result){
-          jQuery('#player').html(result);
-      }
-  });
-}
-
-function isAButton(ele) {
-  console.log(ele);
-  var buttons = document.getElementsByClassName('ca-button');
-  console.log(buttons);
-  var buttons_array = [...buttons];
-  if (buttons_array.includes(ele)) {
-    console.log('here');
-    return true;
-  } else {
-    console.log('hre');
-    return false;
-  }
-}
 
 var s = 0;
 var block = {
@@ -160,70 +155,4 @@ Pressure.set($('body'), block, {only: 'mouse', polyfill: true, polyfillSpeedUp: 
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  document.onkeydown = function(e) {
-
-    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
-      window.event.preventDefault()
-        console.log( "You pressed CTRL + m");
-        $("#captcha_code").focus();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + y" );
-        $("#submit").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + u" );
-        $("#switch_lang").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + i" );
-        $('#voice_inp').click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + v" );
-        $('#audio').click();
-
-    }*/
-    switch (window.event.keyCode) {
-      case 87: //w
-      window.event.preventDefault();
-        console.log("w");
-        $("#captcha_code").focus();
-        break;
-      case 89: //y
-      window.event.preventDefault();
-      console.log("y");
-        $("#submit").click();
-        break;
-      case 76: //l
-      window.event.preventDefault();
-      console.log("l");
-        $("#switch_lang").click();
-        break;
-
-      case 73: //i
-      window.event.preventDefault();
-      console.log("i");
-        $('#voice_inp').click();
-        break;
-      case 65: //a
-      window.event.preventDefault();
-      console.log("a");
-        $('#audio').click();
-        break;
-
-    }
-  };
 </script>
