@@ -1,11 +1,14 @@
-function changeLanguage(e, type) {
+function changeLanguage(e, type, lang) {
   e.preventDefault();
+  lang = document.getElementById('lang').value;
+  console.log(lang);
   $.ajax({
    //url:"../backend/captcha_pages/questionnaire.php",
    url:"../backend/index.php",
    method:"POST",
    data:{"captcha_type" : type,
-         "lang" : document.getElementById("lang").value
+         "lang" : lang,
+         "open" : '1',
         },
    success:function(data) {
      jQuery('#captcha').html(data);

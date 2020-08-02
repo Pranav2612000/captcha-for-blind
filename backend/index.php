@@ -7,15 +7,25 @@ ini_set('display_errors', 'on');
 ini_set("log_errors", 1);
 session_start();
 
+$lang = "en";
+$is_open = "0";
+$region = "default";
+
 if(isset($_POST['lang'])) {
   $lang = $_POST['lang'];
-  $_SESSION['lang'] = $lang;
+}
+
+if(isset($_POST['open'])) {
+  $is_open = $_POST['open'];
 }
 
 if(isset($_POST['region'])) {
   $region = $_POST['region'];
-  $_SESSION['region'] = $region;
 }
+
+$_SESSION['lang'] = $lang;
+$_SESSION['region'] = $region;
+$_SESSION['is_open'] = $is_open;
 
 if($region === "punjab") {
   $questionnaire_arr = array("Identify the capital \nof Punjab? .\n1) Chandigad .\n2) Mumbai.\n3) Chennai.\n4) Hydarabad."  => 'Chandigad', "Which of these is the \nfolk dance of Punjab  .\n1) Kuchipudi .\n2) Bhangra.\n3) Ghumar.\n4) Kathakali."  => 'Bhangra', "Which of these \nis in Punjab?  .\n1) Golden Temple .\n2) Taj Mahal.\n3) Gateway of India.\n4) Agra Fort."  => 'Golden Temple');

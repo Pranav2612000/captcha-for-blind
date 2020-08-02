@@ -6,7 +6,8 @@ $(document).ready(function() {
      url:"../backend/index.php",
      method:"POST",
      data:{"captcha_type" : captcha_type,
-           "lang" : "en"       
+           "lang" : "en",
+           "open" : "0",
      },
      success:function(data) {
        jQuery('#captcha').html(data);
