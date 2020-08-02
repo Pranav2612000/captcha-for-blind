@@ -19,13 +19,9 @@ require '../helpers/add_buttons.php';
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
-<?php 
-error_log($_SESSION['is_open']);
-if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
-  put_placeholder();
-}
-?>
+<script src= <?php echo $base_url ."js/buttons.js"?>/>
 
+<div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <!--<label class='ca-label'>Pressure Captcha</label>-->
@@ -34,7 +30,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
     <?php
       add_buttons();
-      add_switch_language_elem("pressure");
+      //add_switch_language_elem("pressure");
     ?>
 
     <audio id="valid">
@@ -50,6 +46,13 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </audio>       
     <div id="ca-player"></div>
   </form>
+</div>
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
 </div>
 
 
@@ -80,7 +83,10 @@ var block = {
       return;
     }
     console.log(is_open);
-    if(is_open == '0') {
+    if(is_open == '0' ) {
+      return;
+    }
+    if(in_scope == false) {
       return;
     }
     console.log('start', event);
@@ -93,6 +99,9 @@ var block = {
       return;
     }
     if(is_open == '0') {
+      return;
+    }
+    if(in_scope == false) {
       return;
     }
     // event.preventDefault();
@@ -108,6 +117,9 @@ var block = {
       return;
     }
     if(is_open == '0') {
+      return;
+    }
+    if(in_scope == false) {
       return;
     }
     console.log('start deep press', event);
