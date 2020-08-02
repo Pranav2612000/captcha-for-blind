@@ -1,6 +1,7 @@
 <?php
 require '../config.php';
 ?>
+<script type="text/javascript" src=<?php echo $base_url . "js/hammer.js"?>></script>
 <link rel="stylesheet" href=<?php echo $base_url . "css/touch.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
@@ -31,7 +32,6 @@ require '../config.php';
   </form>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 <script>
 var base_url = "<?php echo $base_url; ?>";
 var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
@@ -113,6 +113,24 @@ $(document).ready(function(){
   // Subscribe to the desired event
   var myVar;
   var n = 0;
+  manager.on('tap', function(e) {
+    if(isAButton(e.target))  {
+      return;
+    }
+    n = n + 1;
+    clearTimeout(myVar);
+    myVar = setTimeout(function() {
+      console.log('inside');
+      console.log(n);
+      sendRequest(n);
+      n = 0;
+    }, 1000);
+  });
+
+  manager.on('doubletap', function(e) {
+    console.log('doubletap');
+  });
+
   var deltaX = 0;
   var deltaY = 0;
 
@@ -121,45 +139,6 @@ $(document).ready(function(){
     console.log('swiping ' + direction);
     sendRequest("none");
   });
-  /*
-
-  $('#captcha_form').on('submit', function(event){
-    event.preventDefault();
-    var code = $('#captcha_code').val()
-    console.log(code)
-    if(code == '') {
-     alert('Enter Captcha Code');
-     //console.log("Here with empty code")
-     //e.play();
-     //$('#register').attr('disabled', 'disabled');
-     return false;
-    } else {
-    // alert('Form has been validate with Captcha Code');
-      $.ajax({
-        url: base_url + "backend/validation/word_chain_validation.php",
-        method:"POST",
-        data:{code:code},
-        success:function(data)
-        {
-          console.log(data)
-          if(data == 'success') {
-            v.play();
-            alert("Successful Validation");
-            $('#captcha').html("<h3> Captcha Validated </h3>");
-            //$('#register').attr('disabled', false);
-          } else {
-            i.play();
-            alert("Unsuccessful validation");
-            //$('#register').attr('disabled', 'disabled');
-            //$('#captcha_image').attr('src', 'image.php');
-            console.log('Invalid Code');
-          }
-          $('#captcha_form')[0].reset();
-        }
-      });
-    }
-  });
-*/
 });
 </script>
 

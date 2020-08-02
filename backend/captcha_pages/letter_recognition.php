@@ -2,11 +2,13 @@
 require '../config.php';
 ?>
 <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>-->
-<script src=<?php echo $base_url . "js/paint.js"?>></script>
-<script src=<?php echo $base_url . "js/predicter.js"?>></script>
+<script type="text/javascript" src=<?php echo $base_url . "js/tf.js"?>></script>
+<script type="text/javascript" src=<?php echo $base_url . "js/paint.js"?>></script>
+<script type="text/javascript" src=<?php echo $base_url . "js/predicter.js"?>></script>
+<script type="text/javascript" src= <?php echo $base_url ."js/translate.js"?>/>
+
 <link href=<?php echo $base_url . "css/main.css"?> rel="stylesheet">
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
-<script src= <?php echo $base_url ."js/translate.js"?>/>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 
 <div class="ca-panel-body">
