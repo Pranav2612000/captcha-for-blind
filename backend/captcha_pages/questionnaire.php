@@ -136,6 +136,8 @@ function record(e) {
   console.log('recording...');
   var recognitaion = new webkitSpeechRecognition();
   var lang = document.getElementById("lang").value;
+  console.log(lang)
+  console.log("helllo")
   if(lang == "hi"){
     recognitaion.lang = "hi-IN";
   }
@@ -182,41 +184,49 @@ function changeRegion(e) {
   }
 </script>
 
-<div id=arrow></div>
+<div id='arrow'></div>
 <script>
   function disp(str) {
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
   document.onkeydown = function(e) {
-    /*window.event.preventDefault()
 
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'w') ) {
+    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
+      window.event.preventDefault()
         console.log( "You pressed CTRL + m");
         $("#captcha_code").focus();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + y" );
-        $("#submit").focus();
+        $("#submit").click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + u" );
-        $("#switch_lang").focus();
+        $("#switch_lang").click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + i" );
-        $('#voice_inp').focus();
+        $('#voice_inp').click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
-        console.log( "You pressed CTRL + v" );
-        $('#audio').focus();
+      window.event.preventDefault()
 
-    }*/
-    switch (window.event.keyCode) {
+        console.log( "You pressed CTRL + v" );
+        $('#audio').click();
+
+    }
+    /*switch (window.event.keyCode) {
       case 49: //left arrow
         $("#captcha_code").focus();
         break;
@@ -234,6 +244,6 @@ function changeRegion(e) {
         $('#audio').focus();
         break;
 
-    }
+    }*/
   };
 </script>

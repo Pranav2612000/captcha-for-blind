@@ -60,7 +60,7 @@ if(!$giffile)
 $image = imagecreatefromgif($giffile);
 $imgResized = imagescale($image , 200, 400);*/
 if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'mr') {
-  $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
+    $font = dirname(__FILE__) . '/../../assets/fonts/Hind-SemiBold.ttf';
 } 
 else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'gu') {
     $font = dirname(__FILE__) . '/../../assets/fonts/guj.ttf';
@@ -69,16 +69,17 @@ else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'hi') {
     $font = dirname(__FILE__) . '/../../assets/fonts/Hind-SemiBold.ttf';
 }
 else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'bn') {
-    $font = dirname(__FILE__) . '/../../assets/fonts/bn.ttf';
+    $font = dirname(__FILE__) . '/../../assets/fonts/bg.ttf';
 }
 else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'pa') {
-    $font = dirname(__FILE__) . '/../../assets/fonts/puj.ttf';
+    $font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
 }
 else {
     $randomNumber = rand(0,95); 
     $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.ttf';  
 }
 
+echo $font;
 /*$randomBgColor = rand(0,1);
 if($randomBgColor == 0)
     $randomNumberForBg = rand(1,6); 
