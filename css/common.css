@@ -14,7 +14,12 @@
   border-bottom-right-radius: 0px;
   border-bottom: none;
 }
-
+.ca-val-image {
+  margin-top: 7px;
+  margin-left: 95px; 
+  height: 30px;
+  width: 30px;
+}
 .ca-button.ca-btn-icon {
   height: 30px;
   width: 30px;
@@ -158,6 +163,8 @@
 
 .ca-validated {
   color: green;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 #ca-canvas {

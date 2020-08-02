@@ -11,7 +11,7 @@ function toggleCaptcha() {
     $("#cap_open").show("1000");
     $("#cap_closed").hide("1000");
     //placeholder.style.display = "none";
-    if(a.paused) {
+    if(audio && audio.paused) {
       audio = new Audio( base_url + 'assets/sounds/guides/ins.mp3');
       audio.play();
     }

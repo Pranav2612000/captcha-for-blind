@@ -151,7 +151,11 @@ var block = {
         if(data == 'success') {
           v.play();
           alert("Successful Validation");
-          $('.ca-placeholder-body').html("<h3 class='ca-validated'> Captcha Validated</h3>");
+          var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
+          placeholder.style.border = "4px solid green";
+          $('.ca-panel-body').hide(1000);
+          tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
+          $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
           //$('#register').attr('disabled', false);
         } else {
           i.play();
