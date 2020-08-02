@@ -121,26 +121,6 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
 <div id=arrow></div>
 <script>
-  function disp(str) {
-    //alert(str);
-    document.getElementById('arrow').innerHTML = str;
-    document.onkeydown = function() {
-      switch (window.event.keyCode) {
-        case 38:
-          $("input:text").focus();
-          break;
-
-        case 39:
-          $('#register').focus();
-          break;
-
-        case 40:
-          $('#audio').focus();
-          break;
-
-      }
-    }
-  };
 </script>
 <script type="text/javascript">
 

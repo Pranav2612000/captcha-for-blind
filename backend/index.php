@@ -7,9 +7,23 @@ ini_set('display_errors', 'on');
 ini_set("log_errors", 1);
 session_start();
 
-$lang = "en";
-$is_open = "0";
-$region = "default";
+if(isset($_SESSION['num_of_validations']) && $_SESSION['num_of_validations'] != 0) {
+  error_log("session already present");
+  error_log($_SESSION['num_of_validations']);
+  $_SESSION['num_of_validations'] = $_SESSION['num_of_validations'] + 1;
+  if($_SESSION['num_of_validations'] > 1) {
+    $_SESSION['num_of_validations'] = 0;
+    echo "success";
+    exit();
+  }
+} else {
+  error_log("starting new seesion");
+  $_SESSION['num_of_validations'] = 0;
+  $lang = "en";
+  $is_open = "0";
+  $region = "default";
+}
+
 
 if(isset($_POST['lang'])) {
   $lang = $_POST['lang'];
@@ -23,6 +37,9 @@ if(isset($_POST['region'])) {
   $region = $_POST['region'];
 }
 
+
+
+error_log($lang);
 $_SESSION['lang'] = $lang;
 $_SESSION['region'] = $region;
 $_SESSION['is_open'] = $is_open;
