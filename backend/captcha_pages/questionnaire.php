@@ -1,6 +1,7 @@
 <?php
 require '../config.php';
 require '../helpers/add_placeholder.php';
+require '../helpers/add_switch_languge.php';
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -43,16 +44,9 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
     <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"><?php print $_SESSION["lang_switch"]; ?></button>
-    <div>
-      <select name="lang" id="lang" onchange="changeLanguage(event, 'questionnaire')">
-        <option value="en" >English</option>
-        <option value="hi">Hindi</option>
-        <option value="gu">Gujarati</option>
-        <option value="mr">Marathi</option>
-        <option value="bn">Bengali</option>
-        <option value="pa">Punjabi</option> 
-      </select>
-    </div>
+    <?php 
+      add_switch_language_elem("questionnaire");
+    ?>
 
     <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
     <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio(event)" autofocus ><?php print $_SESSION["audio"]; ?></button>

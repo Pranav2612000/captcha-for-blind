@@ -64,37 +64,36 @@ function getElement($index) {
 if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
   echo "Validated";
 }
-echo $_POST['captcha_type'];
 if(isset($_POST['captcha_type'] )) {
   $captcha_type = $_POST['captcha_type'];
-  echo "redirectign to " . $captcha_type;
+  echo "redirecting to " . $captcha_type;
 } else{
   $randcaptcha = rand(0,2);
   if($randcaptcha == 0){ //audio
     $randaudio = rand(1, 2);
     if($randcaptcha == 1){
-      $captcha_type == 'questionnaire';
+      $captcha_type = 'questionnaire';
     }
     else if($randcaptcha == 2){ 
-      $captcha_type == 'word_chain';
+      $captcha_type = 'word_chain';
     }
   }
   else if($randcaptcha == 1){ //pressure
-    $captcha_type == 'pressure';
+    $captcha_type = 'pressure';
   }
   else if($randcaptcha == 2){ //gesture
     $randaudio = rand(1, 6);
     if($randcaptcha == 1){
-      $captcha_type == 'touch';
+      $captcha_type = 'touch';
     }
     else if($randcaptcha == 2){ 
-      $captcha_type == 'letter_recognition';
+      $captcha_type = 'letter_recognition';
     }
     else if($randcaptcha == 3){ 
-      $captcha_type == 'digit_recognition';
+      $captcha_type = 'digit_recognition';
     }
     else if($randcaptcha == 4){ 
-      $captcha_type == 'object_detection';
+      $captcha_type = 'object_detection';
     }
   }
   
