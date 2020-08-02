@@ -82,12 +82,12 @@
         $audio = $base_location . 'assets/audio/audios/tri/'.$lang.'/tri.mp3'; 
       }
       else if($shape_id == 2) { //square
-        $audio = $base_location . 'assets/audio/audios/reactangle/'.$lang.'/re.mp3'; 
+        $audio = $base_location . 'assets/audio/audios/rectangle/'.$lang.'/re.mp3'; 
       }
 
     }
     else if($captcha_type == 'digit_recognition'){
-      $audio = $base_location . 'assets/audio/audios/Digits/'.$lang.'/'.$num.'.mp3';
+      $audio = $base_location . 'assets/audio/audios/digits/'.$lang.'/'.$num.'.mp3';
     }
 
     /*if($lang == 'hi'){

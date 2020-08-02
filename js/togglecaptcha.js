@@ -21,10 +21,10 @@ function toggleCaptcha() {
     $("#cap_open").show("1000");
     $("#cap_closed").hide("1000");
     //placeholder.style.display = "none";
-    if(audio && audio.paused) {
-      audio = new Audio( base_url + 'assets/sounds/guides/ins.mp3');
+    //if(audio && audio.paused) {
+      audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
       audio.play();
-    }
+    //}
   } else {
     captcha_body.style.display = "none";
     placeholder.style.border = "4px solid green";

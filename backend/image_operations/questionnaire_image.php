@@ -97,6 +97,13 @@ else {
         }
     }
 }
+/*if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'pa') {
+    $font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
+}
+else{
+    $font = dirname(__FILE__) . '/../../assets/fonts/0/font0.ttf';
+}*/
+
 
 /*$randomBgColor = rand(0,1);
 if($randomBgColor == 0)

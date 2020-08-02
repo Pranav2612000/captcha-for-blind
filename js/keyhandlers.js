@@ -9,6 +9,12 @@ document.addEventListener("keydown", function(e) {
     return;
   }
   switch (window.event.keyCode) {
+    case 79: //o - open captcha
+      window.event.preventDefault();
+      console.log("o");
+      toggleCaptcha();
+      break;
+
     case 83: //s - swich que 
       window.event.preventDefault();
       console.log("s");
@@ -25,12 +31,21 @@ document.addEventListener("keydown", function(e) {
       console.log("l");
       play_change_lang();
       break;
+
     case 70: //f - repeat ins 
       window.event.preventDefault();
       console.log("r");
       play_ins();
       break;
 
+    case 65: //a - audio 
+      window.event.preventDefault();
+      console.log("a");
+      getAudio(window.event);
+      break;
+
+
+    
     case 69: //e - eng
       window.event.preventDefault();
       var x = rand(1, 2);

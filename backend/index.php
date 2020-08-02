@@ -92,7 +92,7 @@ if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
 if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
   $captcha_type = $_POST['captcha_type'];
   if($captcha_type == "gesture") {
-    $gesture = ["object_detection", "digit_recognition", "letter_recognition"];
+    $gesture = ["object_detection", "digit_recognition"];
     $type = array_rand($gesture);
     $type = $gesture[$type];
     $captcha_type = $type;
@@ -101,12 +101,12 @@ if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
     $type = array_rand($pressure);
     $type = $pressure[$type];
     $captcha_type = $type;
-  } else if($captcha_type == 'audio') {
+  } /*else if($captcha_type == 'audio') {
     $audio = ["questionnaire", "word_chain"];
     $type = array_rand($audio);
     $type = $audio[$type];
     $captcha_type = $type;
-  }
+  }*/
   $_SESSION['captcha_type'] = $captcha_type;
   echo "redirecting to " . $captcha_type;
 } else{
