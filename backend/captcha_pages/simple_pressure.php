@@ -18,7 +18,6 @@ require '../helpers/add_buttons.php';
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
-<script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
 <script src= <?php echo $base_url ."js/buttons.js"?>/>
 
 <div class='ca-container'>

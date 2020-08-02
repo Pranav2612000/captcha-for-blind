@@ -25,7 +25,7 @@ document.addEventListener("keydown", function(e) {
       console.log("l");
       play_change_lang();
       break;
-    case 82: //r - repeat ins 
+    case 70: //f - repeat ins 
       window.event.preventDefault();
       console.log("r");
       play_ins();
