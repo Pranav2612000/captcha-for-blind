@@ -64,11 +64,11 @@ function getElement($index) {
 if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
   echo "Validated";
 }
-
-if(isset($_POST['captcha_type'])) {
+echo $_POST['captcha_type'];
+if(isset($_POST['captcha_type'] )) {
   $captcha_type = $_POST['captcha_type'];
   echo "redirectign to " . $captcha_type;
-} else {
+} else{
   $randcaptcha = rand(0,2);
   if($randcaptcha == 0){ //audio
     $randaudio = rand(1, 2);
