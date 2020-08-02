@@ -69,9 +69,9 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
 <script>
   var base_url = "<?php echo $base_url; ?>";
-  var is_open = "<?php echo $_SESSION['is_open']; ?>";
   var lang = "<?php echo $_SESSION['lang']; ?>";
   var region = "<?php echo $_SESSION['region']; ?>";
+  var is_open = "<?php echo $_SESSION['is_open']; ?>";
   var body = document.getElementsByClassName('ca-panel-body')[0];
   console.log(body);
   console.log(is_open);
