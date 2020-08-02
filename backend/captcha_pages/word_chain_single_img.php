@@ -147,58 +147,74 @@ $(document).ready(function(){
 });
 </script>
 
-<div id=arrow></div>
+<div id='arrow'></div>
 <script>
   function disp(str) {
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  ////http://jsfiddle.net/JamesD/8q7Mu/
   document.onkeydown = function(e) {
-    /*window.event.preventDefault()
 
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'w') ) {
+    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
+      window.event.preventDefault()
         console.log( "You pressed CTRL + m");
         $("#captcha_code").focus();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + y" );
-        $("#submit").focus();
+        $("#submit").click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + u" );
-        $("#switch_lang").focus();
+        $("#switch_lang").click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + i" );
-        $('#voice_inp').focus();
+        $('#voice_inp').click();
 
     }
     if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
+      window.event.preventDefault()
+
         console.log( "You pressed CTRL + v" );
-        $('#audio').focus();
+        $('#audio').click();
 
     }*/
     switch (window.event.keyCode) {
-      case 49: //left arrow
+      case 87: //w
+      window.event.preventDefault();
+        console.log("w");
         $("#captcha_code").focus();
         break;
-      case 50: //left arrow
-        $("#submit").focus();
+      case 89: //y
+      window.event.preventDefault();
+      console.log("y");
+        $("#submit").click();
         break;
-      case 51: //up arrow
-        $("#switch_lang").focus();
+      case 76: //l
+      window.event.preventDefault();
+      console.log("l");
+        $("#switch_lang").click();
         break;
 
-      case 52: //right key
-        $('#voice_inp').focus();
+      case 73: //i
+      window.event.preventDefault();
+      console.log("i");
+        $('#voice_inp').click();
         break;
-
-      case 53:  //down key
-        $('#audio').focus();
+      case 65: //a
+      window.event.preventDefault();
+      console.log("a");
+        $('#audio').click();
         break;
 
     }

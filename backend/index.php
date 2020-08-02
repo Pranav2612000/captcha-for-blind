@@ -33,7 +33,7 @@ else{
   $questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december', "what is India \ncalled in hindi?  .\n1) Bharat.\n2) China.\n3) Delhi.\n4) Africa."  => 'Bharat', "What is the Capital \nof India?  .\n1) Delhi.\n2) Nepal.\n3) Kashmir.\n4) Assam."  => 'Delhi', );
 }
 
-$shapes_arr = array('circle', 'triangle');
+$shapes_arr = array('circle', 'triangle', 'square');
 $pressure_arr= array("short press", "long press");
 //$questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december');
 $word_chain_arr = array("dog", "cat", "cow", "sheep", "lion", "tiger", "monkey", "donkey", "hibiscus", "tulip", "rose", "lotus", "sunflower", "apple", "lemon", "orange", "fig", "grapes", "banana", "kiwi", "peach", "potato", "spinach", "mushroom", "cabbage", "beetroot", "corn", "carrot", "plum", "apricot", "broccoli", "cauliflower", "olive", "sun", "moon", "venus", "mercury", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "january", "february", "march", "april", "may", "june", "july", "september", "october", "november", "december", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "is", "are", "was", "were", "will", "animal", "flower", "fruit", "flower", "planet", "month");
@@ -59,7 +59,35 @@ if(isset($_POST['captcha_type'])) {
   $captcha_type = $_POST['captcha_type'];
   echo "redirectign to " . $captcha_type;
 } else {
-  $captcha_type = "simple";
+  $randcaptcha = rand(0,2);
+  if($randcaptcha == 0){ //audio
+    $randaudio = rand(1, 2);
+    if($randcaptcha == 1){
+      $captcha_type == 'questionnaire';
+    }
+    else if($randcaptcha == 2){ 
+      $captcha_type == 'word_chain';
+    }
+  }
+  else if($randcaptcha == 1){ //pressure
+    $captcha_type == 'pressure';
+  }
+  else if($randcaptcha == 2){ //gesture
+    $randaudio = rand(1, 6);
+    if($randcaptcha == 1){
+      $captcha_type == 'touch';
+    }
+    else if($randcaptcha == 2){ 
+      $captcha_type == 'letter_recognition';
+    }
+    else if($randcaptcha == 3){ 
+      $captcha_type == 'digit_recognition';
+    }
+    else if($randcaptcha == 4){ 
+      $captcha_type == 'object_detection';
+    }
+  }
+  
 }
 
 // Simple Captcha
@@ -355,22 +383,6 @@ if($captcha_type == 'digit_recognition') {
   $_SESSION['q_secret_audio'] = [$num];
   $_SESSION['q_secret_img'] = [$num];
   $_SESSION['q_string'] = "Draw number | "; 
-
-  // send page to client
-  header('Location: '.'./captcha_pages/digit_recognition.php');
-  die();
-}
-if($captcha_type == 'digit_recognition') {
-
-  //Choose a random letter
-  $seed = str_split('0123456789'); // TODO: Add other possible buttons.
-  shuffle($seed); 
-  $letter = $seed[0];
-
-  $_SESSION['answer'] = $letter;
-  $_SESSION['q_secret_audio'] = [$letter];
-  $_SESSION['q_secret_img'] = [$letter];
-  $_SESSION['q_string'] = "Draw digit | in the given area"; 
 
   // send page to client
   header('Location: '.'./captcha_pages/digit_recognition.php');
