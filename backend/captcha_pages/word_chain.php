@@ -129,7 +129,7 @@ session_start();
   }
   document.onkeydown = function(e) {
 
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
+    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
       window.event.preventDefault()
         console.log( "You pressed CTRL + m");
         $("#captcha_code").focus();
@@ -162,25 +162,35 @@ session_start();
         console.log( "You pressed CTRL + v" );
         $('#audio').click();
 
-    }
-    /*switch (window.event.keyCode) {
-      case 49: //left arrow
+    }*/
+    switch (window.event.keyCode) {
+      case 87: //w
+      window.event.preventDefault();
+        console.log("w");
         $("#captcha_code").focus();
         break;
-      case 50: //left arrow
-        $("#submit").focus();
+      case 89: //y
+      window.event.preventDefault();
+      console.log("y");
+        $("#submit").click();
         break;
-      case 51: //up arrow
-        $("#switch_lang").focus();
-        break;
-
-      case 52: //right key
-        $('#voice_inp').focus();
-        break;
-      case 53: //down key
-        $('#audio').focus();
+      case 76: //l
+      window.event.preventDefault();
+      console.log("l");
+        $("#switch_lang").click();
         break;
 
-    }*/
+      case 73: //i
+      window.event.preventDefault();
+      console.log("i");
+        $('#voice_inp').click();
+        break;
+      case 65: //a
+      window.event.preventDefault();
+      console.log("a");
+        $('#audio').click();
+        break;
+
+    }
   };
 </script>
