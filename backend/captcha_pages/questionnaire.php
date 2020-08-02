@@ -35,6 +35,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
     <label class='ca-label'><?php print $_SESSION["ins1"]; ?></label>
     <div class='ca-img-container'>
+    
       <img class="ca-img" id="captcha_image" />
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
