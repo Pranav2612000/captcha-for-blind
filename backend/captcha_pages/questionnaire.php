@@ -21,6 +21,7 @@ require '../helpers/guide_open_cap.php';
 <script src= <?php echo $base_url ."js/record.js"?>/>
 <script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
+<script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -121,28 +122,6 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       }
     });
   });
-</script>
-
-<div id=arrow></div>
-<script>
-</script>
-<script type="text/javascript">
-
-</script>
-<script>
-  function getAudio(e) {
-    e.preventDefault();
-    var txt = jQuery('#txt').val()
-    jQuery.ajax({
-      //url:'../audio_operations/questionnaire_audio.php',
-      //url:'http://localhost/captcha-alternative/backend/audio_operations/questionnaire_audio.php',
-      url: base_url + "backend/audio_operations/word_chain_audio.php",
-      type: 'post',
-      success: function(result) {
-        jQuery('#ca-player').html(result);
-      }
-    });
-  }
 </script>
 
 <div id='arrow'></div>

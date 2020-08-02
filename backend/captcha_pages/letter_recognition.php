@@ -1,11 +1,25 @@
 <?php
 require '../config.php';
+require '../helpers/add_placeholder.php';
+require '../helpers/add_switch_languge.php';
+require '../helpers/add_switch_region.php';
 ?>
 <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>-->
 <script type="text/javascript" src=<?php echo $base_url . "js/tf.js"?>></script>
 <script type="text/javascript" src=<?php echo $base_url . "js/paint.js"?>></script>
 <script type="text/javascript" src=<?php echo $base_url . "js/predicter.js"?>></script>
 <script type="text/javascript" src= <?php echo $base_url ."js/translate.js"?>/>
+<script src= <?php echo $base_url ."js/changeRegion.js"?>/>
+<script src= <?php echo $base_url ."js/record.js"?>/>
+<script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
+<script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
+<script src= <?php echo $base_url ."js/get_audio.js"?>/>
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
 
 <link href=<?php echo $base_url . "css/main.css"?> rel="stylesheet">
 <link rel="stylesheet" href=<?php echo $base_url . "css/questionnaire.css"?>>
@@ -23,7 +37,7 @@ require '../config.php';
     <!--<button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>-->
 
     <?php 
-      add_switch_language_elem("letter_recongnition");
+      add_switch_language_elem();
     ?>
 
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio()" autofocus/>
@@ -47,6 +61,17 @@ require '../config.php';
 </div>
 <script>
 var base_url = "<?php echo $base_url; ?>";
+var lang = "<?php echo $_SESSION['lang']; ?>";
+var region = "<?php echo $_SESSION['region']; ?>";
+var is_open = "<?php echo $_SESSION['is_open']; ?>";
+var body = document.getElementsByClassName('ca-panel-body')[0];
+console.log(body);
+console.log(is_open);
+console.log(!is_open);
+if(is_open == '0') {
+  console.log('hreer');
+  body.style.display="none";
+}
 var v = document.getElementById("valid"); 
 var i = document.getElementById("invalid"); 
 var e = document.getElementById("enter"); 
@@ -76,7 +101,7 @@ $('#captcha_form').on('submit', function(event){
       if(data == 'success') {
         v.play();
         alert("Successful Validation");
-        $('#captcha').html("<h3 class='ca-validated'> Captcha Validated </h3>");
+        $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>");
         //$('#register').attr('disabled', false);
       } else {
         i.play();
@@ -99,70 +124,4 @@ $('#captcha_form').on('submit', function(event){
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  document.onkeydown = function(e) {
-
-    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
-      window.event.preventDefault()
-        console.log( "You pressed CTRL + m");
-        $("#captcha_code").focus();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + y" );
-        $("#submit").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + u" );
-        $("#switch_lang").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + i" );
-        $('#voice_inp').click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + v" );
-        $('#audio').click();
-
-    }*/
-    switch (window.event.keyCode) {
-      case 87: //w
-      window.event.preventDefault();
-        console.log("w");
-        $("#captcha_code").focus();
-        break;
-      case 89: //y
-      window.event.preventDefault();
-      console.log("y");
-        $("#submit").click();
-        break;
-      case 76: //l
-      window.event.preventDefault();
-      console.log("l");
-        $("#switch_lang").click();
-        break;
-
-      case 73: //i
-      window.event.preventDefault();
-      console.log("i");
-        $('#voice_inp').click();
-        break;
-      case 65: //a
-      window.event.preventDefault();
-      console.log("a");
-        $('#audio').click();
-        break;
-
-    }
-  };
 </script>

@@ -3,27 +3,22 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
-
 session_start();
-
 ?>
-<link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>/>
+<link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
-<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>/>
 <script src= <?php echo $base_url ."js/changeRegion.js"?>/>
 <script src= <?php echo $base_url ."js/record.js"?>/>
 <script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
-
-
+<script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   put_placeholder();
 }
 ?>
-
-
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <p><?php print $_SESSION["ins1"]; ?>
@@ -45,16 +40,13 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
     <label></label>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" />
-    <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')"><?php print $_SESSION["lang_switch"]; ?></button>
-
+    <!--<button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')"><?php print $_SESSION["lang_switch"]; ?></button>-->
+    <label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>
     <?php 
-      add_switch_language_elem("word_chain");
+      add_switch_language_elem();
     ?>
-
-
-
     <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
-    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus ><?php print $_SESSION["audio"]; ?></button>
+    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio(event)" autofocus ><?php print $_SESSION["audio"]; ?></button>
     <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
     <!-- TODO: Modularize -->
     <audio id="valid">
@@ -77,24 +69,17 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 
 <script>
   var base_url = "<?php echo $base_url; ?>";
-  var is_open = "<?php echo $_SESSION['is_open']; ?>";
   var lang = "<?php echo $_SESSION['lang']; ?>";
   var region = "<?php echo $_SESSION['region']; ?>";
-  var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect()
-  elem_width = elem_width.width;
-  img_width = elem_width - 20;
-  $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=400&width=" + img_width);
-  $(document).ready(function() {
-    var body = document.getElementsByClassName('ca-panel-body')[0];
-    console.log(body);
-    console.log(is_open);
-    console.log(!is_open);
-    if(is_open == '0') {
-      console.log('hreer');
-      body.style.display="none";
-    }
-
-
+  var is_open = "<?php echo $_SESSION['is_open']; ?>";
+  var body = document.getElementsByClassName('ca-panel-body')[0];
+  console.log(body);
+  console.log(is_open);
+  console.log(!is_open);
+  if(is_open == '0') {
+    console.log('hreer');
+    body.style.display="none";
+  }
 
   $(document).ready(function() {
     var v = document.getElementById("valid");
@@ -145,70 +130,4 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     //alert(str);
     document.getElementById('arrow').innerHTML = str;
   }
-  document.onkeydown = function(e) {
-
-    /*if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'e') ) {
-      window.event.preventDefault()
-        console.log( "You pressed CTRL + m");
-        $("#captcha_code").focus();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'y') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + y" );
-        $("#submit").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'l') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + u" );
-        $("#switch_lang").click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'i') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + i" );
-        $('#voice_inp').click();
-
-    }
-    if ((window.event.metaKey || window.event.ctrlKey) && ( String.fromCharCode(window.event.which).toLowerCase() === 'v') ) {
-      window.event.preventDefault()
-
-        console.log( "You pressed CTRL + v" );
-        $('#audio').click();
-
-    }*/
-    switch (window.event.keyCode) {
-      case 87: //w
-      window.event.preventDefault();
-        console.log("w");
-        $("#captcha_code").focus();
-        break;
-      case 89: //y
-      window.event.preventDefault();
-      console.log("y");
-        $("#submit").click();
-        break;
-      case 76: //l
-      window.event.preventDefault();
-      console.log("l");
-        $("#switch_lang").click();
-        break;
-
-      case 73: //i
-      window.event.preventDefault();
-      console.log("i");
-        $('#voice_inp').click();
-        break;
-      case 65: //a
-      window.event.preventDefault();
-      console.log("a");
-        $('#audio').click();
-        break;
-
-    }
-  };
 </script>
