@@ -244,6 +244,9 @@ for ($x = 1; $x <= ($img_width * $img_height / 700); $x++){
     $y2 = rand(0, $img_height);
     
     imageline($img, $x1, $y1, $x2, $y2, $text_color);
+    imagerectangle($img, $x1, $y1, $x2, $y2, $text_color);
+    imagearc($img, $x1, $y1, $x2, $y2, $x3, $y3, $text_color);
+
 }
 
 imagettftext($img, 30, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
