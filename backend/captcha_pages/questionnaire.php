@@ -2,6 +2,7 @@
 require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
+require '../helpers/add_switch_region.php';
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -27,23 +28,18 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <label class='ca-label'><?php print $_SESSION["ins2"]; ?></label>
-    <div>
-      <select name="region" id="region" onchange="changeRegion(event)">
-        <option value="default">Default</option>
-        <option value="punjab">Punjab</option>
-        <option value="andhrapradesh">Andhra Pradesh</option>
-        <option value="maharastra">Maharastra</option>
-        <option value="westbengal">West Bengal</option>
-      </select>
-    </div>
-
     <label class='ca-label'><?php print $_SESSION["ins1"]; ?></label>
+
+    <?php 
+      add_switch_region_elem();
+    ?>
+
     <div class='ca-img-container'>
-    
       <img class="ca-img" id="captcha_image" />
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
     <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"><?php print $_SESSION["lang_switch"]; ?></button>
+
     <?php 
       add_switch_language_elem("questionnaire");
     ?>
