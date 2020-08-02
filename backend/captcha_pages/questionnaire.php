@@ -14,6 +14,7 @@ require '../helpers/add_placeholder.php';
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
 <script src= <?php echo $base_url ."js/changeRegion.js"?>/>
+<script src= <?php echo $base_url ."js/record.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -52,7 +53,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     </div>
 
     <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
-    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus ><?php print $_SESSION["audio"]; ?></button>
+    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio(event)" autofocus ><?php print $_SESSION["audio"]; ?></button>
     <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
 
     <audio id="valid">
@@ -150,29 +151,11 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   };
 </script>
 <script type="text/javascript">
-function record(e) {
-  e.preventDefault();
-  console.log('recording...');
-  var recognitaion = new webkitSpeechRecognition();
-  var lang = document.getElementById("lang").value;
-  console.log(lang)
-  console.log("helllo")
-  if(lang == "hi"){
-    recognitaion.lang = "hi-IN";
-  }
-  else{
-    recognitaion.lang = "en-IN";
-  }
-  recognitaion.onresult = function(event) {
-    console.log(event);
-    document.getElementById('captcha_code').value = document.getElementById('captcha_code').value + event.results[0][0].transcript;
-  }
-  recognitaion.start();
-}
 
 </script>
 <script>
-  function getAudio() {
+  function getAudio(e) {
+    e.preventDefault();
     var txt = jQuery('#txt').val()
     jQuery.ajax({
       //url:'../audio_operations/questionnaire_audio.php',
