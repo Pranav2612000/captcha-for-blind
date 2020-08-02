@@ -61,7 +61,20 @@ $image = imagecreatefromgif($giffile);
 $imgResized = imagescale($image , 200, 400);*/
 if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'mr') {
   $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
-} else {
+} 
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'gu') {
+    $font = dirname(__FILE__) . '/../../assets/fonts/guj.ttf';
+} 
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'hi') {
+    $font = dirname(__FILE__) . '/../../assets/fonts/Hind-SemiBold.ttf';
+}
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'bn') {
+    $font = dirname(__FILE__) . '/../../assets/fonts/bn.ttf';
+}
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'pa') {
+    $font = dirname(__FILE__) . '/../../assets/fonts/puj.ttf';
+}
+else {
     $randomNumber = rand(0,95); 
     $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.ttf';  
 }
@@ -78,17 +91,11 @@ else
 //$img = imagecreatefrompng($imgfile);
 
 //$randjpeg = rand(0, 1);  #1 - jpeg , 0 -png
-$randomBgColor = rand(0,3);
+$randomBgColor = rand(0,5);
 if($randomBgColor == 0){
-  //if($randjpeg == 1)
-   // $randomNumberForBg = rand(8,20);
-  //else
     $randomNumberForBg = rand(1,7); 
 }
 else if($randomBgColor == 1){
-  //if($randjpeg == 1)
-    //$randomNumberForBg = rand(8,20);
-  //else 
     $randomNumberForBg = rand(1,16);
 }
 else if($randomBgColor == 2){
@@ -96,6 +103,12 @@ else if($randomBgColor == 2){
 }
 else if($randomBgColor == 3){
   $randomNumberForBg = rand(1,20); 
+}
+else if($randomBgColor == 4){
+    $randomNumberForBg = rand(8,20); 
+}
+else if($randomBgColor == 5){
+    $randomNumberForBg = rand(17,20); 
 }
 
 
@@ -145,14 +158,14 @@ $img = imagecrop($img, $cropping_rect );
         $text_color = imagecolorallocate($img, 41, 10, 10); #dark brown
 }*/
 
-if($randomBgColor == 0){
+if($randomBgColor == 0 || $randomBgColor == 4){
     $randomTextColor = rand(1, 2);
     if($randomTextColor == 1)
         $text_color = imagecolorallocate($img, 250, 250, 200); #cream
     else 
         $text_color = imagecolorallocate($img, 255, 255, 0);  #yellow
 } 
-else if($randomBgColor == 1){
+else if($randomBgColor == 1 || $randomBgColor == 5){
     $randomTextColor = rand(1, 4);
     if($randomTextColor == 1)
         $text_color = imagecolorallocate($img, 0, 0, 0); #black
