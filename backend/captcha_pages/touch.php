@@ -15,6 +15,10 @@ require '../config.php';
     <!--<div class="touch-sensor" style="height:200px;width:400px;background:lightblue"></div>-->
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
     <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'touch')">Switch language</button>
+    <?php 
+      add_switch_language_elem("touch");
+    ?>
+
     <!-- TODO: Modularize -->
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">

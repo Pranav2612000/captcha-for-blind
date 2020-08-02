@@ -1,11 +1,28 @@
 <?php
 require '../config.php';
+require '../helpers/add_placeholder.php';
+require '../helpers/add_switch_languge.php';
+require '../helpers/add_switch_region.php';
+
 session_start();
 
 ?>
-<link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/word_chain.css" ?>/>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
-<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>>
+<link rel="stylesheet" href=<?php echo $base_url . "css/common.css" ?>/>
+<script src= <?php echo $base_url ."js/changeRegion.js"?>/>
+<script src= <?php echo $base_url ."js/record.js"?>/>
+<script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
+<script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
+
+
+<?php 
+error_log($_SESSION['is_open']);
+if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+}
+?>
+
 
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
@@ -29,6 +46,13 @@ session_start();
     <label></label>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" />
     <button class='ca-button' id="switch_lang" onclick="changeLanguage(event, 'word_chain')"><?php print $_SESSION["lang_switch"]; ?></button>
+
+    <?php 
+      add_switch_language_elem("word_chain");
+    ?>
+
+
+
     <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
     <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio()" autofocus ><?php print $_SESSION["audio"]; ?></button>
     <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
@@ -53,30 +77,24 @@ session_start();
 
 <script>
   var base_url = "<?php echo $base_url; ?>";
-
-  function record(e) {
-    e.preventDefault();
-    console.log('recording...');
-    var recognitaion = new webkitSpeechRecognition();
-    recognitaion.lang = "en-GB";
-    recognitaion.onresult = function(event) {
-      console.log(event);
-      document.getElementById('captcha_code').value = document.getElementById('captcha_code').value + event.results[0][0].transcript;
+  var is_open = "<?php echo $_SESSION['is_open']; ?>";
+  var lang = "<?php echo $_SESSION['lang']; ?>";
+  var region = "<?php echo $_SESSION['region']; ?>";
+  var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect()
+  elem_width = elem_width.width;
+  img_width = elem_width - 20;
+  $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=400&width=" + img_width);
+  $(document).ready(function() {
+    var body = document.getElementsByClassName('ca-panel-body')[0];
+    console.log(body);
+    console.log(is_open);
+    console.log(!is_open);
+    if(is_open == '0') {
+      console.log('hreer');
+      body.style.display="none";
     }
-    recognitaion.start();
-  }
 
-  function getAudio() {
-    var txt = jQuery('#txt').val();
-    jQuery.ajax({
-      /*url:'../audio_operations/word_chain_audio.php',*/
-      url: base_url + "backend/audio_operations/word_chain_audio.php",
-      type: 'post',
-      success: function(result) {
-        jQuery('#ca-player').html(result);
-      }
-    });
-  }
+
 
   $(document).ready(function() {
     var v = document.getElementById("valid");

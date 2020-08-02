@@ -59,31 +59,40 @@ if(!$giffile)
 
 $image = imagecreatefromgif($giffile);
 $imgResized = imagescale($image , 200, 400);*/
-if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'mr') {
+if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'mr') {
     $font = dirname(__FILE__) . '/../../assets/fonts/mr.ttf';
 } 
-else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'gu') {
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'gu') {
     $font = dirname(__FILE__) . '/../../assets/fonts/guj.ttf';
 } 
-else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'hi') {
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'hi') {
     $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
 }
-else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'bn') {
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'bn') {
     $font = dirname(__FILE__) . '/../../assets/fonts/bg.ttf';
 }
-else if(isset($_SESSION['lang']) && $_SESSION['lang'] = 'pa') {
+else if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'pa') {
     $font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
 }
 else {
+    $font = dirname(__FILE__) . '/../../assets/fonts/0/font0.ttf'; 
+
     # 0 - simple, 1 - distored
     $randtype = rand(0, 1);
     if($randtype == 0){
         $randomNumber = rand(0,29); 
-        $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.ttf';  
+        $font = dirname(__FILE__) . '/../../assets/fonts/0/font' . $randomNumber . '.ttf';  
     }
     else{
         $randext = rand(0, 1);
-        $font = dirname(__FILE__) . '/../../assets/fonts/font' . $randomNumber . '.TTF';  
+        if($randext == 0){
+            $randt = rand(87, 95);
+            $font = dirname(__FILE__) . '/../../assets/fonts/1/TTF/font' . $randt . '.TTF';  
+        }
+        else if($randext == 1){
+            $randt = rand(30, 86);
+            $font = dirname(__FILE__) . '/../../assets/fonts/1/ttf/font' . $randt . '.ttf';  
+        }
     }
     
 }
@@ -108,7 +117,7 @@ else if($randomBgColor == 1){
     $randomNumberForBg = rand(1,16);
 }
 else if($randomBgColor == 2){
-  $randomNumberForBg = rand(1,20); 
+  $randomNumberForBg = rand(1,15); 
 }
 else if($randomBgColor == 3){
   $randomNumberForBg = rand(1,20); 
@@ -143,14 +152,15 @@ else{*/
         $imgfile = dirname(__FILE__) . '/../../assets/backgrounds/'.$randomBgColor.'/'.$randomNumberForBg.'.jpeg'; 
         $img = imagecreatefromjpeg($imgfile);
 
-        /*$newHeight = 500;
+        /*
+        $newHeight = 500;
         $newWidth = 400;
         list($width, $height) = getimagesize($img);
         $newHeight = ($height / $width) * $newWidth;
         $tmp = imagecreatetruecolor($newWidth, $newHeight);
         imagecopyresampled($tmp, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-        $img = $tmp;*/
+        $img = $tmp;
+        */
 
     }
 //}

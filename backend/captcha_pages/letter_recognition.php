@@ -21,6 +21,11 @@ require '../config.php';
       <canvas id="canvas"></canvas> 
     </div>
     <!--<button class='ca-button' id='switch_lang' onclick="changeLanguage(event)">Switch language</button>-->
+
+    <?php 
+      add_switch_language_elem("letter_recongnition");
+    ?>
+
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio()" autofocus/>
     <input type="submit" name="register" id="submit" class="ca-button" value="Check"/>
     <div>

@@ -17,6 +17,10 @@ require '../config.php';
     <button id="audio" class="ca-button" onclick="getAudio(event)">Audio</button>
     <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'pressure')">Switch language</button>
 
+    <?php 
+      add_switch_language_elem("pressure");
+    ?>
+
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
     </audio> 

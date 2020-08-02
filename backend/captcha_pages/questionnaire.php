@@ -38,7 +38,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <img class="ca-img" id="captcha_image" />
     </div>
     <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
-    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"><?php print $_SESSION["lang_switch"]; ?></button>
+    <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'questionnaire')"></button>
 
     <?php 
       add_switch_language_elem("questionnaire");
@@ -78,7 +78,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     console.log(is_open);
     console.log(!is_open);
     if(is_open == '0') {
-      console.log('hreer');
+      console.log('here');
       body.style.display="none";
     }
     var v = document.getElementById("valid");
