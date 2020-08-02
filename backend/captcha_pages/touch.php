@@ -1,6 +1,7 @@
 <?php
 require '../config.php';
 ?>
+<script type="text/javascript" src=<?php echo $base_url . "js/hammer.js"?>></script>
 <link rel="stylesheet" href=<?php echo $base_url . "css/touch.css"?>>
 <link rel="stylesheet" href=<?php echo $base_url . "css/common.css"?>>
 <script src= <?php echo $base_url ."js/translate.js"?>/>
@@ -31,7 +32,6 @@ require '../config.php';
   </form>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 <script>
 var base_url = "<?php echo $base_url; ?>";
 var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
