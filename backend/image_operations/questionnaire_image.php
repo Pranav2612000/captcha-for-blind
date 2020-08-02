@@ -237,15 +237,15 @@ else if($randomBgColor == 3){
 //$text_color= imagecolorallocate($img, 0, 0, 0);
 
 // Decide no of lines to draw depending on the area
-for ($x = 1; $x <= ($img_width * $img_height / 700); $x++){
+for ($x = 1; $x <= ($img_width * $img_height / 400); $x++){
     $x1 = rand(0, $img_width);
     $y1 = rand(0, $img_height);
     $x2 = rand(0, $img_width);
     $y2 = rand(0, $img_height);
     
     imageline($img, $x1, $y1, $x2, $y2, $text_color);
-    imagerectangle($img, $x1, $y1, $x2, $y2, $text_color);
-    imagearc($img, $x1, $y1, $x2, $y2, $x3, $y3, $text_color);
+    //imagerectangle($img, $x1, $y1, $x2, $y2, $text_color);
+    //imagearc($img, $x1, $y1, $x2, $y2, $x3, $y3, $text_color);
 
 }
 

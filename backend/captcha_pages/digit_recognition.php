@@ -13,6 +13,7 @@ session_start();
 <script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
+<script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -32,6 +33,9 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     ?>
 
     <input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
+    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
+    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
+    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
     <div>
       <audio id="valid">
         <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">

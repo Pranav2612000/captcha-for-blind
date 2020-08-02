@@ -15,6 +15,7 @@ require '../helpers/add_switch_region.php';
 <script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
 <script src= <?php echo $base_url ."js/elementCheckers.js"?>/>
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
+<script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -29,6 +30,9 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
       <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=40"; ?> id="captcha_image" />
     </div>
     <button id="audio" class="ca-button" onclick="getAudio(event)">Audio</button>
+    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
+    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
+    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
     <button class='ca-button' id='switch_lang' onclick="changeLanguage(event, 'pressure')">Switch language</button>
 
     <?php 
