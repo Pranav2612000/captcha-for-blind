@@ -20,6 +20,9 @@ function toggleCaptcha(e) {
   if(in_scope == false) {
     return;
   }
+  if(validation_com == true) {
+    return;
+  }
   if(isABtnIcon(e.target)) {
     return;
   }
