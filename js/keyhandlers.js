@@ -63,7 +63,7 @@ document.addEventListener("keydown", function(e) {
       else{
         type = "pressure"
       }
-      changeLanguage_press(e,type, 'en')
+      changeLanguage(e,'en', type)
       break;
       
     case 72: //h - hindi
@@ -75,7 +75,7 @@ document.addEventListener("keydown", function(e) {
       else{
         type = "pressure"
       }
-      changeLanguage_press(e,type, 'hi')
+      changeLanguage(e,'hi', type)
       break;
     
     case 71: //g - guj
@@ -87,7 +87,7 @@ document.addEventListener("keydown", function(e) {
       else{
         type = "pressure"
       }
-      changeLanguage_press(e,type, 'gu')
+      changeLanguage(e,'gu', type)
       break;
 
     case 77: //m - marathi
@@ -99,7 +99,7 @@ document.addEventListener("keydown", function(e) {
       else{
         type = "pressure"
       }
-      changeLanguage_press(e,type, 'mr')
+      changeLanguage(e,'mr', type)
       break;
       
     case 80: //p - panjabi
@@ -111,7 +111,7 @@ document.addEventListener("keydown", function(e) {
       else{
         type = "pressure"
       }
-      changeLanguage_press(e,type, 'pa')
+      changeLanguage(e,'pa', type)
       break;
   }
 });

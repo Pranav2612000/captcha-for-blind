@@ -54,7 +54,7 @@ error_log($_SESSION['is_open']);
 var base_url = "<?php echo $base_url; ?>";
 var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
 var ended = true;
-var validation_com = true;
+var validation_com = false;
 elem_width = elem_width.width;
 img_width = elem_width - 20;
 $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=40&width=" + img_width);

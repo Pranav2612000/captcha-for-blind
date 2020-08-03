@@ -63,7 +63,7 @@ var e = document.getElementById("enter");
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
 var ended = true;
-var validation_com = true;
+var validation_com = false;
 
 console.log(body);
 console.log(is_open);
@@ -171,6 +171,10 @@ var block = {
       {
         console.log(data)
         if(data == 'success') {
+          if(ended == true) {
+            return;
+          }
+          ended = true;
           v.play();
           alert("Successful Validation");
           var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 

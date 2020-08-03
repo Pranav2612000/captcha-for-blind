@@ -186,6 +186,7 @@ else{*/
 //$img = imagecreatetruecolor(500, 400);
 //$background_color = imagecolorallocate($img, 255, 255, 255);
 //imagefilledrectangle($img, 0, 0, 500, 400, $background_color);
+error_log($imgfile);
 
 
 $cropping_rect = ['x' => 0,
