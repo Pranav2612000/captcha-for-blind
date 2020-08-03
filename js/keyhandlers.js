@@ -13,17 +13,18 @@ document.addEventListener("keydown", function(e) {
     return;
   }*/
 
-  if(window.event.keyCode == 79) {
+  if(window.event.keyCode == 74) { //J - open captcha
       window.event.preventDefault();
       console.log("o");
       toggleCaptcha(e);
   }
+
   if(ended == true) {
     return;
   }
   
   switch (window.event.keyCode) {
-    case 83: //s - swich que 
+    case 50: //2 - swich que 
       window.event.preventDefault();
       console.log("s");
       var x = rand(1, 2);
@@ -33,8 +34,9 @@ document.addEventListener("keydown", function(e) {
       else if(x == 2){
         switchCaptcha(window.event, "pressure");
       }
-      break;  
-    case 76: //l - change lang
+      break;
+
+    case 51: //3 - change lang
       window.event.preventDefault();
       console.log("l");
       play_change_lang();
@@ -46,7 +48,7 @@ document.addEventListener("keydown", function(e) {
       play_ins();
       break;
 
-    case 65: //a - audio 
+    case 49: //1 - audio 
       window.event.preventDefault();
       console.log("a");
       getAudio(window.event);
@@ -54,7 +56,7 @@ document.addEventListener("keydown", function(e) {
 
 
     
-    case 69: //e - eng
+    case 52: //4 - eng
       window.event.preventDefault();
       var x = rand(1, 2);
       if(x == 1){
@@ -66,8 +68,10 @@ document.addEventListener("keydown", function(e) {
       changeLanguage(e,'en', type)
       break;
       
-    case 72: //h - hindi
+    case 53: //5 - hindi
       window.event.preventDefault();
+      var cap_type = '<?php echo $_SESSION["captcha_type"]; ?>';
+      console.log(cap_type);
       var x = rand(1, 2);
       if(x == 1){
         type = "gesture"
@@ -78,7 +82,7 @@ document.addEventListener("keydown", function(e) {
       changeLanguage(e,'hi', type)
       break;
     
-    case 71: //g - guj
+    case 55: //7 - guj
       window.event.preventDefault();
       var x = rand(1, 2);
       if(x == 1){
@@ -90,7 +94,7 @@ document.addEventListener("keydown", function(e) {
       changeLanguage(e,'gu', type)
       break;
 
-    case 77: //m - marathi
+    case 54: //6 - marathi
       window.event.preventDefault();
       var x = rand(1, 2);
       if(x == 1){
@@ -102,7 +106,7 @@ document.addEventListener("keydown", function(e) {
       changeLanguage(e,'mr', type)
       break;
       
-    case 80: //p - panjabi
+    case 55: //8 - panjabi
       window.event.preventDefault();
       var x = rand(1, 2);
       if(x == 1){
@@ -113,5 +117,14 @@ document.addEventListener("keydown", function(e) {
       }
       changeLanguage(e,'pa', type)
       break;
+
+    
+    case 83: // s for stop
+      window.event.preventDefault();
+      audio.paused();
+      audio_l.paused();
+      break;
+
+
   }
 });

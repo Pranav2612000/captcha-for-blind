@@ -1,15 +1,15 @@
 var audio;
+var audio_l;
 
 function play_ins(){
-  audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+  audio = new Audio( base_url + 'assets/audio/guides/page_load_mod.mp3');
   audio.play();
 }
 function play_change_lang(){
-  var audio_l = new Audio( base_url + 'assets/audio/guides/lang_ins.mp3');
+  audio_l = new Audio( base_url + 'assets/audio/guides/lg_ins_mod.mp3');
   audio_l.play();
 }
 
-var audio;
 function toggleCaptcha(e) {
   var switch_audio_elem = document.getElementById('ca-switch-lang-icon');
   //console.log(e.target);
@@ -39,7 +39,7 @@ function toggleCaptcha(e) {
     ended = false;
     //placeholder.style.display = "none";
     //if(audio && audio.paused) {
-      audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+      audio = new Audio( base_url + 'assets/audio/guides/page_load_mod.mp3');
       audio.play();
     //}
   } else {

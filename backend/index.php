@@ -89,6 +89,10 @@ function getElement($index) {
 if(isset($_SESSION['validated']) && $_SESSION["validated"] == 'true') {
   echo "Validated";
 }
+
+
+
+
 if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
   $captcha_type = $_POST['captcha_type'];
   if($captcha_type == "gesture") {
@@ -331,7 +335,7 @@ if($captcha_type == 'word_chain') {
 if($captcha_type == 'touch') {
   // choose between press and swipe. If press ,chose a random no for num of touches between 1 and 5.
   $question = rand(0, 1);
-  $no_of_presses = rand(1, 6);
+  $no_of_presses = 2;
   
   if($lang == 'hi'){
     $t = "बार";
