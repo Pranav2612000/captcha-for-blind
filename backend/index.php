@@ -110,35 +110,18 @@ if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
   $_SESSION['captcha_type'] = $captcha_type;
   echo "redirecting to " . $captcha_type;
 } else{
-  $randcaptcha = rand(0,2);
-  if($randcaptcha == 0){ //audio
-      $randaudio = rand(1,2);
-
-      if($randaudio == 1){
-        $captcha_type = 'questionnaire';
-      }
-      else if($randaudio == 2){ 
-        $captcha_type = 'word_chain';
-      }  
-
+  $randgesture = rand(1, 4);
+  if($randgesture == 1){
+    $captcha_type = 'touch';
   }
-  else if($randcaptcha == 1){ //pressure
+  else if($randgesture == 2){ 
     $captcha_type = 'pressure';
   }
-  else if($randcaptcha == 2){ //gesture
-    $randgesture = rand(1, 4);
-    if($randgesture == 1){
-      $captcha_type = 'touch';
-    }
-    else if($randgesture == 2){ 
-      $captcha_type = 'letter_recognition';
-    }
-    else if($randgesture == 3){ 
-      $captcha_type = 'digit_recognition';
-    }
-    else if($randgesture == 4){ 
-      $captcha_type = 'object_detection';
-    }
+  else if($randgesture == 3){ 
+    $captcha_type = 'digit_recognition';
+  }
+  else if($randgesture == 4){ 
+    $captcha_type = 'object_detection';
   }
   $_SESSION['captcha_type'] = "random";
 }

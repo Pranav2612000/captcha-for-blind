@@ -56,9 +56,7 @@ session_start();
 </div>
 <?php 
 error_log($_SESSION['is_open']);
-if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
-  put_placeholder();
-}
+put_placeholder();
 ?>
 </div>
 
@@ -75,6 +73,12 @@ console.log(!is_open);
 if(is_open == '0') {
   console.log('hreer');
   body.style.display="none";
+} else {
+  $("#cap_open").show("1000");
+  $("#cap_closed").hide("1000");
+  audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+  audio.play();
+  ended = false;
 }
 
 var canvas = document.getElementById('ca-canvas');
