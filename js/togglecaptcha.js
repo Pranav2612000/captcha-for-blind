@@ -40,11 +40,8 @@ function toggleCaptcha(e) {
     $("#cap_open").show("1000");
     $("#cap_closed").hide("1000");
     ended = false;
-    //placeholder.style.display = "none";
-    //if(audio && audio.paused) {
-      audio = new Audio( base_url + 'assets/audio/guides/page_load_final.mp3');
-      audio.play();
-    //}
+    audio = new Audio( base_url + 'assets/audio/guides/page_load_final.mp3');
+    audio.play();
   } else {
     captcha_body.style.display = "none";
     placeholder.style.border = "4px solid green";
