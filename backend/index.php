@@ -61,7 +61,7 @@ else{
   $questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december', "what is India \ncalled in hindi?  .\n1) Bharat.\n2) China.\n3) Delhi.\n4) Africa."  => 'Bharat', "What is the Capital \nof India?  .\n1) Delhi.\n2) Nepal.\n3) Kashmir.\n4) Assam."  => 'Delhi', );
 }
 
-$shapes_arr = array('circle', 'triangle', 'square');
+$shapes_arr = array('circle', 'triangle', 'banana', 'hand', 'pants', 'square', 't-shirt');
 $pressure_arr= array("short press", "long press");
 //$questionnaire_arr = array("Identify the animal.\n1) Elephant.\n2) Hibiscus.\n3) Earth.\n4) Sun."  => 'elephant', "Identify the animal.\n1) Dog.\n2) China.\n3) Banana.\n4) Apple. " => 'dog', "Identify the animal.\n1) Mango.\n2) Apple.\n3) Cat.\n4) Peach. " => 'cat', "Identify the animal.\n1) Mars.\n2) Dog.\n3) Earth.\n4) Sun. " => 'dog', "Identify the animal.\n1) Cat.\n2) Banana.\n3) Earth.\n4) Sun. " => 'cat', "Identify the flower.\n1) Dog.\n2) Lotus.\n3) Banana.\n4) Apple. " => 'lotus', "Identify the flower.\n1) Mango.\n2) Apple.\n3) Rose.\n4) Peach. " => 'rose',"Identify the planet.\n1) Dog.\n2) China.\n3) Banana.\n4) Earth. " => 'earth' , "Identify the day.\n1) Sunday.\n2) China.\n3) Banana.\n4) Apple. " => 'sunday', "Identify the month.\n1) Elephant.\n2) December.\n3) Earth.\n4) Sun. " => 'december');
 $word_chain_arr = array("dog", "cat", "cow", "sheep", "lion", "tiger", "monkey", "donkey", "hibiscus", "tulip", "rose", "lotus", "sunflower", "apple", "lemon", "orange", "fig", "grapes", "banana", "kiwi", "peach", "potato", "spinach", "mushroom", "cabbage", "beetroot", "corn", "carrot", "plum", "apricot", "broccoli", "cauliflower", "olive", "sun", "moon", "venus", "mercury", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "january", "february", "march", "april", "may", "june", "july", "september", "october", "november", "december", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "is", "are", "was", "were", "will", "animal", "flower", "fruit", "flower", "planet", "month");
@@ -419,7 +419,9 @@ if($captcha_type == 'touch') {
 // Scribble detection captcha
 if($captcha_type == 'object_detection') {
   // choose a random shape that is to be drawn
-  $question = array_rand($shapes_arr);
+  $valid_qs =  array(0, 1, 5);
+  $question = array_rand($valid_qs);
+  $question = $valid_qs[$question];
 
   // set session values
   $_SESSION['shape_id'] = $question;

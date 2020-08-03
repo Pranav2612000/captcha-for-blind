@@ -5,7 +5,6 @@ session_start();
 //$captcha_code = $index;
 //
 $q_secret = $_SESSION['q_secret_img'];
-$ins1 = $_SESSION['ins1'];
 $cap_type = $_SESSION['captcha_type'];
 
 if(isset($_GET['id'])) {
@@ -183,6 +182,7 @@ else{*/
 //$background_color = imagecolorallocate($img, 255, 255, 255);
 //imagefilledrectangle($img, 0, 0, 500, 400, $background_color);
 error_log($imgfile);
+error_log($font);
 
 
 $cropping_rect = ['x' => 0,
@@ -262,7 +262,7 @@ for ($x = 1; $x <= ($img_width * $img_height / 400); $x++){
     //imagearc($img, $x1, $y1, $x2, $y2, $x3, $y3, $text_color);
 
 }
-
+error_log($question);
 imagettftext($img, 30, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
 imagepng($img);
 imagedestroy($img);
