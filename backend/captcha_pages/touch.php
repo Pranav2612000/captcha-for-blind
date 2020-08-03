@@ -56,6 +56,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 var base_url = "<?php echo $base_url; ?>";
 var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect();
 var ended = true;
+var validation_com = true;
 elem_width = elem_width.width;
 img_width = elem_width - 20;
 $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=40&width=" + img_width);
@@ -90,6 +91,7 @@ function sendRequest(value) {
         tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
         $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
         ended = true;
+        validation_com = true;
       } else {
         i.play();
         alert("Unsuccessful validation");

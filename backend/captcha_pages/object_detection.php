@@ -68,6 +68,7 @@ var base_url = "<?php echo $base_url; ?>";
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
 var ended = true;
+var validation_com = false;
 console.log(body);
 console.log(is_open);
 console.log(!is_open);
@@ -163,6 +164,7 @@ function stopDrawing(e) {
         tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
         $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
         ended = true;
+        validation_com = true;
         //$('#register').attr('disabled', false);
       } else {
         i.play();

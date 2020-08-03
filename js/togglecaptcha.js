@@ -12,8 +12,8 @@ function play_change_lang(){
 var audio;
 function toggleCaptcha(e) {
   var switch_audio_elem = document.getElementById('ca-switch-lang-icon');
-  console.log(e.target);
-  console.log(switch_audio_elem);
+  //console.log(e.target);
+  //console.log(switch_audio_elem);
   if(e.target == switch_audio_elem) {
     return;
   }
@@ -22,7 +22,7 @@ function toggleCaptcha(e) {
   var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
   //document.getElementsByClassName("ca-button-group")[0].classList.toggle("show");
   console.log(captcha_body);
-  if (captcha_body.style.display === "none") {
+  if (captcha_body && captcha_body.style.display === "none") {
     placeholder.style.borderTop = "none";
     captcha_body.style.display = "block";
     $("#cap_open").show("1000");

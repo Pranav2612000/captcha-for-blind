@@ -8,6 +8,11 @@ document.addEventListener("keydown", function(e) {
   if(isAInput(e.target)) {
     return;
   }
+
+  /*if(validation_com == true) {
+    return;
+  }*/
+
   if(window.event.keyCode == 79) {
       window.event.preventDefault();
       console.log("o");
@@ -16,6 +21,7 @@ document.addEventListener("keydown", function(e) {
   if(ended == true) {
     return;
   }
+  
   switch (window.event.keyCode) {
     case 83: //s - swich que 
       window.event.preventDefault();
