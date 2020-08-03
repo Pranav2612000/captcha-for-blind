@@ -143,7 +143,7 @@ else if($randomBgColor == 4){
     $randomNumberForBg = rand(8,20); 
 }
 else if($randomBgColor == 5){
-    $randomNumberForBg = rand(17,20); 
+    $randomNumberForBg = rand(18,20); 
 }
 
 
