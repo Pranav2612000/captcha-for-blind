@@ -57,7 +57,7 @@ var ended = true;
 var validation_com = false;
 elem_width = elem_width.width;
 img_width = elem_width - 20;
-$('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=40&width=" + img_width);
+$('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=140&width=" + img_width);
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
 console.log(body);

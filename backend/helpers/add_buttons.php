@@ -5,11 +5,9 @@ function add_buttons() {
       <button id='audio' class='ca-button' onclick='getAudio(event)'>
         <img class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/audio.png'/>
       </button>
-
       <button id='change_captcha' class='ca-button' onclick='switchCaptcha(event)'>
         <img id='change-captcha-img' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/switch.png'/>
       </button>
-
       <button class='ca-button' id='switch_lang' onclick='myFunction(event)'>
         <img id='ca-switch-lang-icon' onclick='myFunction(event)' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
         <div id='myDropdown' class='dropdown-content'>

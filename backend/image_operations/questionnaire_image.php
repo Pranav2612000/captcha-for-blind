@@ -267,6 +267,7 @@ for ($x = 1; $x <= ($img_width * $img_height / 400); $x++){
 
 }
 error_log($question);
-imagettftext($img, 30, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
+//imagettftext($img, 50, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
+imagettftext($img, 50, 0, 15, 80 , $text_color, $font, $question);
 imagepng($img);
 imagedestroy($img);
