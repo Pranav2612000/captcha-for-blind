@@ -26,7 +26,7 @@ session_start();
     <canvas id="ca-canvas"></canvas> 
     <!--<label class='ca-label'>Draw a </label>-->
     <div class='ca-img-container'>
-      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=400"; ?> id="captcha_image" />
+      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=150&width=400"; ?> id="captcha_image" />
     </div>
     <!--<label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>-->
     <?php 

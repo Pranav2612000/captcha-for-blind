@@ -25,7 +25,7 @@ require '../helpers/add_buttons.php';
   <form method="post" id="captcha_form">
     <!--<label class='ca-label'>Pressure Captcha</label>-->
     <div class='ca-img-container'>
-      <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=40"; ?> id="captcha_image" />
+      <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=120"; ?> id="captcha_image" />
     </div>
     <?php
       add_buttons();
