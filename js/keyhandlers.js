@@ -70,8 +70,8 @@ document.addEventListener("keydown", function(e) {
       
     case 53: //5 - hindi
       window.event.preventDefault();
-      var cap_type = '<?php echo $_SESSION["captcha_type"]; ?>';
-      console.log(cap_type);
+      //var cap_type = '<?php echo $_SESSION["captcha_type"]; ?>';
+      //console.log(cap_type);
       var x = rand(1, 2);
       if(x == 1){
         type = "gesture"

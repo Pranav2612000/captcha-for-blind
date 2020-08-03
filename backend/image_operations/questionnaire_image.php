@@ -131,7 +131,7 @@ if($randomBgColor == 0){
     $randomNumberForBg = rand(1,7); 
 }
 else if($randomBgColor == 1){
-    $randomNumberForBg = rand(1,16);
+    $randomNumberForBg = rand(2,16);
 }
 else if($randomBgColor == 2){
   $randomNumberForBg = rand(1,15); 
