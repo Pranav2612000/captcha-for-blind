@@ -2,7 +2,7 @@ var audio;
 var audio_l;
 
 function play_ins(){
-  audio = new Audio( base_url + 'assets/audio/guides/page_load_mod.mp3');
+  audio = new Audio( base_url + 'assets/audio/guides/page_load_final.mp3');
   audio.play();
 }
 function play_change_lang(){
@@ -39,7 +39,7 @@ function toggleCaptcha(e) {
     ended = false;
     //placeholder.style.display = "none";
     //if(audio && audio.paused) {
-      audio = new Audio( base_url + 'assets/audio/guides/page_load_mod.mp3');
+      audio = new Audio( base_url + 'assets/audio/guides/page_load_final.mp3');
       audio.play();
     //}
   } else {
