@@ -28,17 +28,11 @@ session_start();
     <canvas id="ca-canvas"></canvas> 
     <!--<label class='ca-label'>Draw a </label>-->
     <div class='ca-img-container'>
-      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=40&width=400"; ?> id="captcha_image" />
+      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=120&width=400"; ?> id="captcha_image" />
     </div>
-    <!--<label class='ca-label'><?php print $_SESSION["lang_switch"]; ?></label>-->
     <?php 
       add_buttons();
     ?>
-
-    <!---<input type="button" name="audio" id="audio" class="ca-button" value="Audio" onclick="getAudio(event)" autofocus/>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
-    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>-->
     <div>
       <audio id="valid">
         <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
