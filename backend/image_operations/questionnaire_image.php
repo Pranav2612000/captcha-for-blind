@@ -87,7 +87,7 @@ else{
         $randtype = rand(0, 1);
         //if($randtype == 0){
         if(true) {
-            $randomNumber = rand(0,29); 
+            $randomNumber = rand(0,28); 
             $font = dirname(__FILE__) . '/../../assets/fonts/0/font' . $randomNumber . '.ttf';  
         }
         else{
