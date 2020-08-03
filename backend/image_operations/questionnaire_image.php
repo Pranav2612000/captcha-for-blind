@@ -60,7 +60,7 @@ if(!$giffile)
 $image = imagecreatefromgif($giffile);
 $imgResized = imagescale($image , 200, 400);*/
 
-if($cap_type == 'digit_recognition'){
+if($cap_type == 'digit_recognition' || $cap_type == 'touch'){
     $font = dirname(__FILE__) . '/../../assets/fonts/0/font0.ttf'; 
 }
 else{
@@ -86,7 +86,7 @@ else{
         $randtype = rand(0, 1);
         //if($randtype == 0){
         if(true) {
-            $randomNumber = rand(0,29); 
+            $randomNumber = rand(0,28); 
             $font = dirname(__FILE__) . '/../../assets/fonts/0/font' . $randomNumber . '.ttf';  
         }
         else{
@@ -102,6 +102,10 @@ else{
         }
     }
 }
+
+//$font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
+
+
 /*if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'pa') {
     $font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
 }
