@@ -61,7 +61,7 @@ if(!$giffile)
 $image = imagecreatefromgif($giffile);
 $imgResized = imagescale($image , 200, 400);*/
 
-if($cap_type == 'digit_recognition'){
+if($cap_type == 'digit_recognition' || $cap_type == 'touch'){
     $font = dirname(__FILE__) . '/../../assets/fonts/0/font0.ttf'; 
 }
 else{
@@ -103,6 +103,10 @@ else{
         }
     }
 }
+
+//$font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
+
+
 /*if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'pa') {
     $font = dirname(__FILE__) . '/../../assets/fonts/pun.ttf';
 }
