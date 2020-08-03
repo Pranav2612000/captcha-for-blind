@@ -42,3 +42,13 @@ function isABtnIcon(ele) {
     return false;
   }
 }
+
+function isAHelperBtn(ele) {
+  var btnicons = document.getElementsByClassName('ca-btn-helper');
+  var btnicons_array = [...btnicons];
+  if (btnicons_array.includes(ele)) {
+    return true;
+  } else {
+    return false;
+  }
+}

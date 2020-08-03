@@ -26,6 +26,9 @@ function toggleCaptcha(e) {
   if(isABtnIcon(e.target)) {
     return;
   }
+  if(isAHelperBtn(e.target)) {
+    return;
+  }
   console.log('opening');
   var captcha_body = document.getElementsByClassName("ca-panel-body")[0];
   var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 

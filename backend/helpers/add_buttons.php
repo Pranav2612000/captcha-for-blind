@@ -2,13 +2,13 @@
 require '../config.php';
 function add_buttons() {
   $str = " <div class='ca-button-group'>
-      <button id='audio' class='ca-button' onclick='getAudio(event)'>
+      <button id='audio' class='ca-button ca-btn-helper' onclick='getAudio(event)'>
         <img class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/audio.png'/>
       </button>
-      <button id='change_captcha' class='ca-button' onclick='switchCaptcha(event)'>
-        <img id='change-captcha-img' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/switch.png'/>
+      <button id='change_captcha' class='ca-button ca-btn-icon' onclick='switchCaptcha(event)'>
+        <img id='change-captcha-img' class='ca-btn-icon ca-ignore ca-button' src='" . $GLOBALS['base_url'] . "assets/images/switch.png'/>
       </button>
-      <button class='ca-button' id='switch_lang' onclick='myFunction(event)'>
+      <button class='ca-button ca-btn-helper' id='switch_lang' onclick='myFunction(event)'>
         <img id='ca-switch-lang-icon' onclick='myFunction(event)' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
         <div id='myDropdown' class='dropdown-content'>
           <span onclick='changeLanguage(event, \"en\")' class='lang-option ca-ignore'>English</span>
