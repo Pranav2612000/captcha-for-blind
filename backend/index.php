@@ -101,7 +101,7 @@ if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
     $type = $gesture[$type];
     $captcha_type = $type;
   } else if($captcha_type == 'pressure') {
-    $pressure = ["touch", "pressure"];
+    $pressure = ["touch", "pressure","object_detection", "digit_recognition"];
     $type = array_rand($pressure);
     $type = $pressure[$type];
     $captcha_type = $type;
