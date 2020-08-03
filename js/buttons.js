@@ -4,7 +4,6 @@ function myFunction(e) {
     e.stopPropagation();
     in_scope = false;
     document.getElementById("myDropdown").classList.toggle("show");
-    $('#myDropdown').show();
     console.log(in_scope);
 }
 

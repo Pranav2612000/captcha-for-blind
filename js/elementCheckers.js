@@ -32,3 +32,13 @@ function isToBeIgnored(ele) {
     return false;
   }
 }
+
+function isABtnIcon(ele) {
+  var btnicons = document.getElementsByClassName('ca-btn-icon');
+  var btnicons_array = [...btnicons];
+  if (btnicons_array.includes(ele)) {
+    return true;
+  } else {
+    return false;
+  }
+}

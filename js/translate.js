@@ -1,7 +1,9 @@
-function changeLanguage(e, type, lang) {
+var curr_lang;
+
+function changeLanguage(e, lang, type) {
   e.preventDefault();
-  lang = document.getElementById('lang').value;
   console.log(lang);
+  curr_lang = lang;
   $.ajax({
    //url:"../backend/captcha_pages/questionnaire.php",
    url:"../backend/index.php",
@@ -16,9 +18,10 @@ function changeLanguage(e, type, lang) {
   });
 }
 
-function changeLanguage_press(e,type, lang) {
+function changeLanguage_press(e, lang, type) {
   e.preventDefault();
   console.log(lang);
+  curr_lang = lang;
   $.ajax({
    //url:"../backend/captcha_pages/questionnaire.php",
    url:"../backend/index.php",

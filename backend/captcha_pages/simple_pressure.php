@@ -171,6 +171,10 @@ var block = {
       {
         console.log(data)
         if(data == 'success') {
+          if(ended == true) {
+            return;
+          }
+          ended = true;
           v.play();
           alert("Successful Validation");
           var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 

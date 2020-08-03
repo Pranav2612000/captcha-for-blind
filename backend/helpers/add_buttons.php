@@ -13,9 +13,13 @@ function add_buttons() {
       <button class='ca-button' id='switch_lang' onclick='myFunction(event)'>
         <img id='ca-switch-lang-icon' onclick='myFunction(event)' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
         <div id='myDropdown' class='dropdown-content'>
-          <a href='#' class='ca-ignore'>Link 1</a>
-          <a href='#' class='ca-ignore'>Link 2</a>
-          <a href='#' class='ca-ignore'>Link 3</a>
+          <span onclick='changeLanguage(event, \"en\")' class='lang-option ca-ignore'>English</span>
+          <span onclick='changeLanguage(event, \"hi\")' class='lang-option ca-ignore'>Hindi</span>
+          <span onclick='changeLanguage(event, \"pa\")' class='lang-option ca-ignore'>Punjabi</span>
+          <span onclick='changeLanguage(event, \"gu\")' class='lang-option ca-ignore'>Gujrati</span>
+          <span onclick='changeLanguage(event, \"bn\")' class='lang-option ca-ignore'>Bengali</span>
+          <span onclick='changeLanguage(event, \"mr\")' class='lang-option ca-ignore'>Marathi</span>
+          <span class='lang-option ca-ignore'>Gujrati</span>
         </div>
       </button>
     </div> ";
