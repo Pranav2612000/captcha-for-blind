@@ -42,6 +42,7 @@ function toggleCaptcha(e) {
     ended = false;
     audio = new Audio( base_url + 'assets/audio/guides/page_load_final.mp3');
     audio.play();
+    is_open = '0';
   } else {
     captcha_body.style.display = "none";
     placeholder.style.border = "4px solid green";

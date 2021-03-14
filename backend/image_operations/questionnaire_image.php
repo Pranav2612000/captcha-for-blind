@@ -7,11 +7,20 @@ session_start();
 $q_secret = $_SESSION['q_secret_img'];
 $cap_type = $_SESSION['captcha_type'];
 
+ $ins1 =  $_SESSION['ins1'];
+ $ins2 =  $_SESSION['ins2'];
+ $ins3 =  $_SESSION['ins3'];
+ $ins4 =  $_SESSION['ins4'];
+
 if(isset($_GET['id'])) {
   $img_id = $_GET['id'];
   $question = $q_secret[$img_id];
   $num_of_newlines = substr_count($question, "\n") + 1;
   error_log($question);
+}
+
+if($cap_type== 'word_chain') {
+  $question = $ins1 . $q_secret[0] . $ins2 . $q_secret[1] . $ins3 . $q_secret[2] . $ins4 . $q_secret[3];
 }
 
 if(isset($_GET['height'])) {
@@ -268,6 +277,16 @@ for ($x = 1; $x <= ($img_width * $img_height / 400); $x++){
 }
 error_log($question);
 //imagettftext($img, 50, 0, 15, $img_height/$num_of_newlines , $text_color, $font, $question);
-imagettftext($img, 50, 0, 15, 80 , $text_color, $font, $question);
+if($cap_type == 'questionnaire') {
+    imagettftext($img, 15, 0, 10, 20 , $text_color, $font, $question);
+} else if($cap_type == 'word_chain') {
+    imagettftext($img, 15, 0, 10, 20 , $text_color, $font, $question);
+} else if($cap_type == 'object_detection') {
+    imagettftext($img, 50, 0, 100, 80 , $text_color, $font, $question);
+} else if($cap_type == 'pressure') {
+    imagettftext($img, 40, 0, 40, 80 , $text_color, $font, $question);
+} else {
+    imagettftext($img, 50, 0, 160, 80 , $text_color, $font, $question);
+}
 imagepng($img);
 imagedestroy($img);

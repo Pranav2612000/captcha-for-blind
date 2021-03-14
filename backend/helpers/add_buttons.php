@@ -11,8 +11,8 @@ function add_buttons() {
       <button class='ca-button ca-btn-helper' id='switch_lang' onclick='myFunction(event)'>
         <img id='ca-switch-lang-icon' onclick='myFunction(event)' class='ca-btn-icon ca-button' src='" . $GLOBALS['base_url'] . "assets/images/translate.jpeg'/>
         <div id='myDropdown' class='dropdown-content'>
-          <span onclick='changeLanguage(event, \"en\")' class='lang-option ca-ignore'>English</span>
-          <span onclick='changeLanguage(event, \"hi\")' class='lang-option ca-ignore'>Hindi</span>
+          <span onclick='changeLanguage(event, \"en\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>English</span>
+          <span onclick='changeLanguage(event, \"hi\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Hindi</span>
           <span onclick='changeLanguage(event, \"pa\")' class='lang-option ca-ignore'>Punjabi</span>
           <span onclick='changeLanguage(event, \"gu\")' class='lang-option ca-ignore'>Gujrati</span>
           <span onclick='changeLanguage(event, \"bn\")' class='lang-option ca-ignore'>Bengali</span>

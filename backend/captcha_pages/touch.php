@@ -22,7 +22,7 @@ require '../helpers/add_buttons.php';
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
     <div class='ca-img-container'>
-      <img class='ca-img' id="captcha_image" />
+      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=150&width=400&refresh=".rand(1,10); ?> id="captcha_image" />
     </div>
     <?php 
       add_buttons();
@@ -57,7 +57,7 @@ var ended = true;
 var validation_com = false;
 elem_width = elem_width.width;
 img_width = elem_width - 20;
-$('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=140&width=" + img_width);
+//$('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=140&width=" + img_width);
 var is_open = "<?php echo $_SESSION['is_open']; ?>";
 var body = document.getElementsByClassName('ca-panel-body')[0];
 console.log(body);
@@ -108,7 +108,7 @@ function sendRequest(value) {
 };
 $(document).ready(function(){
   //var touch_sensor = document.querySelector('.touch-sensor');
-  var touch_sensor = document.querySelector('body');
+  var touch_sensor = document.querySelector('html');
   var hammer = new Hammer(touch_sensor);
   var manager = new Hammer.Manager(touch_sensor);
   var hammer = new Hammer(touch_sensor);
@@ -132,6 +132,7 @@ $(document).ready(function(){
   var myVar;
   var n = 0;
   manager.on('tap', function(e) {
+    console.log("tapped");
     if(isAButton(e.target))  {
       return;
     }

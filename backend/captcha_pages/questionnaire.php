@@ -3,6 +3,7 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
+require '../helpers/add_buttons.php';
 ?>
 <!--
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -22,48 +23,47 @@ require '../helpers/add_switch_region.php';
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
-<?php 
-error_log($_SESSION['is_open']);
-if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
-  put_placeholder();
-}
-?>
+<script src= <?php echo $base_url ."js/buttons.js"?>/>
+<div class='ca-container'>
 <div class="ca-panel-body">
   <form method="post" id="captcha_form">
-    <label class='ca-label'><?php print $_SESSION["ins2"]; ?></label>
-    <label class='ca-label'><?php print $_SESSION["ins1"]; ?></label>
-    <?php 
-      add_switch_region_elem();
-    ?>
-
+    <!--<label class='ca-label'>Pressure Captcha</label>-->
     <div class='ca-img-container'>
-      <img class="ca-img" id="captcha_image" />
+      <img src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&width=400&height=150&refresh=". rand(1,10); ?> id="captcha_image" />
     </div>
-    <input class='ca-input' type="text" name="captcha_code" id="captcha_code" class="form-control" autocomplete="off"/>
-    <?php 
-      add_switch_language_elem();
+    <div class='form-buttons'>
+      <div class='captcha-answer'>
+          <input type="text" id="captcha_code" name="answer" autofocus>
+      </div>
+      <div class='captcha-submit'>
+          <button class='captcha-submit-button' type="submit">Submit</button>
+      </div>
+    </div>
+    <?php
+      add_buttons();
+      //add_switch_language_elem("pressure");
     ?>
-
-    <button class='ca-button' id='voice_inp' onclick="record(event)"><?php print $_SESSION["rec_ans"]; ?></button>
-    <button class='ca-button'  name="audio" id="audio" value="Audio" onclick="getAudio(event)" autofocus ><?php print $_SESSION["audio"]; ?></button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use gesture captcha" onclick="switchCaptcha(event, 'gesture')">Gesture</button>
-    <button class='ca-button' type="submit" name="register" id="change_captcha" value="use pressure captcha" onclick="switchCaptcha(event, 'pressure')">Pressure</button>
-    <button class='ca-button' type="submit" name="register" id="submit" value="Check" ><?php print $_SESSION["check"]; ?></button>
 
     <audio id="valid">
       <source src=<?php echo $base_url . "assets/sounds/valid.mp3"; ?> type="audio/mp3">
-    </audio>
-
+    </audio> 
+     
     <audio id="enter">
       <source src=<?php echo $base_url . "assets/sounds/enter.mpeg"; ?> type="audio/mp3">
-    </audio>
+    </audio> 
 
     <audio id="invalid">
       <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
-    </audio>
+    </audio>       
     <div id="ca-player"></div>
   </form>
 </div>
+<?php 
+error_log($_SESSION['is_open']);
+//if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
+  put_placeholder();
+//}
+?>
 
 <script>
   var base_url = "<?php echo $base_url; ?>"; 
@@ -73,6 +73,27 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
   var elem_width = document.getElementsByClassName("ca-panel-body")[0].getBoundingClientRect()
   elem_width = elem_width.width;
   img_width = elem_width - 20;
+  var v = document.getElementById("valid"); 
+  var i = document.getElementById("invalid"); 
+  var e = document.getElementById("enter"); 
+  var is_open = "<?php echo $_SESSION['is_open']; ?>";
+  var body = document.getElementsByClassName('ca-panel-body')[0];
+  var ended = true;
+  var validation_com = false;
+
+  console.log(body);
+  console.log("open",is_open);
+  console.log(!is_open);
+  if(is_open == '0') {
+    console.log('hreer');
+    body.style.display="none";
+  } else {
+    $("#cap_open").show("1000");
+    $("#cap_closed").hide("1000");
+    audio = new Audio( base_url + 'assets/audio/guides/page_load.mp3');
+    audio.play();
+    ended = false;
+  }
   $('.ca-img').attr("src", base_url + "backend/image_operations/questionnaire_image.php?id=0&height=400&width=" + img_width);
   $(document).ready(function() {
     var body = document.getElementsByClassName('ca-panel-body')[0];
@@ -92,6 +113,7 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
     $('#captcha_form').on('submit', function(event) {
       event.preventDefault();
       var code = $('#captcha_code').val();
+      console.log(code);
       if (code == '') {
         alert('Enter Captcha Code');
         return false;
@@ -107,6 +129,13 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
               v.play();
               alert("Successful Validation");
               $('.ca-panel-body').html("<h3 class='ca-validated'> Captcha Validated </h3>");
+              var placeholder = document.getElementsByClassName("ca-placeholder-body")[0]; 
+              placeholder.style.border = "4px solid green";
+              $('.ca-panel-body').hide(1000);
+              tick_img = "<img class='ca-val-image' src='" + base_url + "assets/images/tick.jpeg'/>";
+              $('.ca-placeholder-body').html(tick_img + "<h3 class='ca-validated'> Captcha Validated</h3>");
+              ended = true;
+              validation_com = true;
             } else {
               i.play();
               alert("Unsuccessful Validation");

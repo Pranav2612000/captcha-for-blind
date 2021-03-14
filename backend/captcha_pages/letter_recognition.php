@@ -3,12 +3,14 @@ require '../config.php';
 require '../helpers/add_placeholder.php';
 require '../helpers/add_switch_languge.php';
 require '../helpers/add_switch_region.php';
+require '../helpers/add_buttons.php';
 ?>
 <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>-->
 <script type="text/javascript" src=<?php echo $base_url . "js/tf.js"?>></script>
 <script type="text/javascript" src=<?php echo $base_url . "js/paint.js"?>></script>
 <script type="text/javascript" src=<?php echo $base_url . "js/predicter.js"?>></script>
 <script type="text/javascript" src= <?php echo $base_url ."js/translate.js"?>/>
+<script src= <?php echo $base_url ."js/translate.js"?>/>
 <script src= <?php echo $base_url ."js/changeRegion.js"?>/>
 <script src= <?php echo $base_url ."js/record.js"?>/>
 <script src= <?php echo $base_url ."js/keyhandlers.js"?>/>
@@ -16,6 +18,7 @@ require '../helpers/add_switch_region.php';
 <script src= <?php echo $base_url ."js/get_audio.js"?>/>
 <script src= <?php echo $base_url ."js/switch_captcha.js"?>/>
 <script src= <?php echo $base_url ."js/play_initialaudio.js"?>/>
+<script src= <?php echo $base_url ."js/buttons.js"?>/>
 <?php 
 error_log($_SESSION['is_open']);
 if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
@@ -66,6 +69,8 @@ if(isset($_SESSION['is_open']) && $_SESSION['is_open'] == '0') {
 </div>
 <script>
 var base_url = "<?php echo $base_url; ?>";
+var ended = true;
+var validation_com = false;
 var lang = "<?php echo $_SESSION['lang']; ?>";
 var region = "<?php echo $_SESSION['region']; ?>";
 var is_open = "<?php echo $_SESSION['is_open']; ?>";

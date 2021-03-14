@@ -34,19 +34,6 @@
             chmod($dir, 0777);
     }
 
-    /* Make the curl request to get audio file */
-    /*$curl = curl_init();
-    curl_setopt_array($curl, [
-      CURLOPT_RETURNTRANSFER => 1,
-      CURLOPT_URL => 'https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q='.$txt.'&tl='.$lang.'-IN',
-      CURLOPT_USERAGENT => 'Codular Sample cURL Request'
-    ]);
-    $html = curl_exec($curl);
-    curl_close($curl);*/
-
-    /* save the audio file */
-    //file_put_contents($file, $html);
-
     $captcha_type = $_SESSION['captcha_type'];
     $q = $_SESSION['pressure_type'];
     $touch_type = $_SESSION['touch_type'];
@@ -56,6 +43,22 @@
 
 
     $noise = $base_location . 'assets/sounds/guntrimmed.mp3';
+
+    if($captcha_type=="questionnaire" || $captcha_type=="word_chain") {
+      /* Make the curl request to get audio file */
+      $curl = curl_init();
+      curl_setopt_array($curl, [
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_URL => 'https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q='.$txt.'&tl='.$lang.'-IN',
+        CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+      ]);
+      $html = curl_exec($curl);
+      curl_close($curl);
+
+      /* save the audio file */
+      file_put_contents($file, $html);
+      $audio = $file;
+    }
 
 
     if($captcha_type == 'pressure'){

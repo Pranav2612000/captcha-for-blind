@@ -8,8 +8,6 @@ function myFunction(e) {
 }
 
 document.onclick = function(event) {
-  console.log('undropping');
-  event.stopPropagation();
   if (!event.target.matches('#switch_lang')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     in_scope = true;
@@ -17,6 +15,7 @@ document.onclick = function(event) {
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
+        event.stopPropagation();
         openDropdown.classList.remove('show');
       }
     }

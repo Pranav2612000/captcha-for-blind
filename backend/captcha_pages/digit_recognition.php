@@ -28,7 +28,7 @@ session_start();
     <canvas id="ca-canvas"></canvas> 
     <!--<label class='ca-label'>Draw a </label>-->
     <div class='ca-img-container'>
-      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=120&width=400"; ?> id="captcha_image" />
+      <img class='ca-img' src=<?php echo $base_url . "backend/image_operations/questionnaire_image.php?id=0&height=120&width=400&refresh=" . rand(1,10); ?> id="captcha_image" />
     </div>
     <?php 
       add_buttons();
@@ -45,7 +45,7 @@ session_start();
       <audio id="invalid">
         <source src=<?php echo $base_url . "assets/sounds/invalid.mp3"; ?> type="audio/mp3">
       </audio>       
-      <div id="player">
+      <div id="ca-player">
       </div>
     </div>
   </form>

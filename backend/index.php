@@ -101,7 +101,8 @@ if(isset($_POST['captcha_type'] ) && $_POST['captcha_type'] != 'random') {
     $type = $gesture[$type];
     $captcha_type = $type;
   } else if($captcha_type == 'pressure') {
-    $pressure = ["touch", "pressure","object_detection", "digit_recognition"];
+    //$pressure = ["touch", "pressure","object_detection", "digit_recognition"];
+    $pressure = ["pressure"];
     $type = array_rand($pressure);
     $type = $pressure[$type];
     $captcha_type = $type;
@@ -221,7 +222,7 @@ if($captcha_type == 'questionnaire') {
   $answer = $questionnaire_arr[$question];
 
   // Save these values in session variables
-  $_SESSION['q_string'] = "|";
+  $_SESSION['q_string'] = $translated_text;
   $_SESSION['q_secret_img'] = [$translated_text];
   $_SESSION['q_secret_audio'] = [$translated_text];
   $_SESSION['answer'] = $answer; 
@@ -258,7 +259,11 @@ if($captcha_type == 'word_chain') {
   for($i = 0; $i < 7; $i++){
       $index = $random_index[$i]; 
       //$stmt = $stmt."\n".$word_chain_arr[$index];
-      $stmt = $stmt."\n". $random_array[$i];
+      if($i % 2 == 0) {
+          $stmt = $stmt . "\n" . $random_array[$i];
+      } else {
+          $stmt = $stmt . "\t\t\t\t\t\t\t\t\t\t" . $random_array[$i];
+      }
   }
 
   //$_SESSION['stmt'] = $stmt;
@@ -294,10 +299,10 @@ if($captcha_type == 'word_chain') {
 
   //hardcoded text translate
   if($lang == 'en') {
-    $ins1 = "If";
-    $ins2 = "is present in given statement, then press";
-    $ins3 = "else, press";
-    $ins4 = "The words are:";
+    $ins1 = " If ";
+    $ins2 = " is present \n in given statement, then press ";
+    $ins3 = " \n else, press ";
+    $ins4 = " The words are: ";
     $lang_switch = "Switch language";
     $rec_ans = "Record Answer";
     $audio = "Audio";
@@ -323,6 +328,8 @@ if($captcha_type == 'word_chain') {
   $_SESSION['rec_ans'] = $rec_ans;
   $_SESSION['audio'] = $audio;
   $_SESSION['check'] = $check;
+  $question = $ins1 . $word . $ins2 . $yes . $ins3 . $no . $ins4 . $stmt;
+  $_SESSION['q_string'] = $question;
 
  
 
@@ -571,7 +578,8 @@ if($captcha_type == 'letter_recognition') {
 if($captcha_type == 'digit_recognition') {
 
   //Choose a random letter
-  $seed = str_split('0123456789'); // TODO: Add other possible buttons.
+  //$seed = str_split('0123456789'); // TODO: Add other possible buttons.
+  $seed = str_split('0124578'); // TODO: Add other possible buttons.
   shuffle($seed); 
   $num = $seed[0];
 
