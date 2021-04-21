@@ -35,6 +35,12 @@ require '../helpers/add_buttons.php';
       <div class='captcha-answer'>
           <input type="text" id="captcha_code" name="answer" autofocus>
       </div>
+      &nbsp &nbsp
+      <div class='captcha-record'>
+        <button class='record-button' type="button" onclick="record(event)">
+          <img src="http://localhost/captcha-alternative/assets/images/mic.png" alt="record" height=15 width=20/>
+        </button>
+      </div>
       <div class='captcha-submit'>
           <button class='captcha-submit-button' type="submit">Submit</button>
       </div>
