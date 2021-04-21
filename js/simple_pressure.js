@@ -3,36 +3,36 @@
 // The failure block will return with an "error" and message showing why the device doesn't support 3D Touch and Force Touch
 
 $.pressureConfig({
-  polyfill: false
+  polyfill: false,
 });
 var s = 0;
 var block = {
-  start: function(event){
-    console.log('start', event);
+  start: function (event) {
+    console.log("start", event);
     s = 0;
   },
 
-  change: function(force, event){
+  change: function (force, event) {
     // event.preventDefault();
     //this.style.width = Pressure.map(force, 0, 1, 200, 300) + 'px';
     this.innerHTML = force;
-   
+
     s = force;
-    console.log('change', force);
+    console.log("change", force);
     //console.log('mahi' + s);
   },
 
-  startDeepPress: function(event){
-    console.log('start deep press', event);
-    this.style.backgroundColor = '#FFFFFF';
+  startDeepPress: function (event) {
+    console.log("start deep press", event);
+    this.style.backgroundColor = "#FFFFFF";
   },
 
   /*endDeepPress: function(){
     console.log('end deep press');
     this.style.backgroundColor = '#0080FF';
   },*/
-	
-   /*end: function(){
+
+  /*end: function(){
    	alert(force);
    }*/
   /*end: function(){
@@ -41,11 +41,11 @@ var block = {
     this.innerHTML = 0;
   },*/
 
-  unsupported: function(){
+  unsupported: function () {
     console.log(this);
-    this.innerHTML = 'Your device / browser does not support this :(';
-  }
-}
+    this.innerHTML = "Your device / browser does not support this :(";
+  },
+};
 /*$("el2").mouseover(function(){
 
     $("el2").css("cursor","pointer");
@@ -65,39 +65,38 @@ window.onload=function(){
       $("body").load("inde.html");
 });*/
 
-$('body').mousedown(function(){
-	//alert("hello");
-	jQuery.ajax({
-                    url:'../../assets/sounds/cc.mpeg',
-                    type:'post',
-                    success:function(result){
-                        jQuery('#player').html(result);
-                    }
-                });
-      //$("body").load("inde.html");
+$("body").mousedown(function () {
+  //alert("hello");
+  jQuery.ajax({
+    url: "../../assets/sounds/cc.mpeg",
+    type: "post",
+    success: function (result) {
+      jQuery("#player").html(result);
+    },
+  });
+  //$("body").load("inde.html");
 });
 
-$('body').mouseup(function(){
-	var x = s;
-	if(x > 0.8){
-		jQuery.ajax({
-                    url:'../audio_operations/valid.php',
-                    type:'post',
-                    success:function(result){
-                        jQuery('#player').html(result);
-                    }
-                });
-                    window.location.href="../../homepage/index.html";
-	}
-	else{
-	jQuery.ajax({
-                    url:'../audio_operations/invalid.php',
-                    type:'post',
-                    success:function(result){
-                        jQuery('#player').html(result);
-                    }
-                });
-	}
+$("body").mouseup(function () {
+  var x = s;
+  if (x > 0.8) {
+    jQuery.ajax({
+      url: "../audio_operations/valid.php",
+      type: "post",
+      success: function (result) {
+        jQuery("#player").html(result);
+      },
+    });
+    window.location.href = "../../homepage/index.html";
+  } else {
+    jQuery.ajax({
+      url: "../audio_operations/invalid.php",
+      type: "post",
+      success: function (result) {
+        jQuery("#player").html(result);
+      },
+    });
+  }
 });
 
 /*$('#btn').click(function(){
@@ -131,11 +130,14 @@ $('body').mouseup(function(){
 	}
 });*/
 
+Pressure.set($("#el2"), block, {
+  only: "mouse",
+  polyfill: true,
+  polyfillSpeedUp: 2000,
+});
 
-Pressure.set($('#el2'), block, {only: 'mouse', polyfill: true, polyfillSpeedUp: 2000});
-
-$('img').pressure({
-  change: function(force, event){
+$("img").pressure({
+  change: function (force, event) {
     console.log(force);
-  }
+  },
 });

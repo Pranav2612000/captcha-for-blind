@@ -6,13 +6,13 @@ function changeRegion(e) {
     url: "../backend/index.php",
     method: "POST",
     data: {
-      "captcha_type": "questionnaire",
-      "lang": "en",
-      "region": document.getElementById("region").value,
-      "open" : "1"
+      captcha_type: "questionnaire",
+      lang: "en",
+      region: document.getElementById("region").value,
+      open: "1",
     },
-    success: function(data) {
-      jQuery('#captcha').html(data);
-    }
+    success: function (data) {
+      jQuery("#captcha").html(data);
+    },
   });
 }

@@ -7,13 +7,13 @@ function switchCaptcha(e, type) {
     url: "../backend/index.php",
     method: "POST",
     data: {
-      "captcha_type": type,
-      "lang": "en",
-      "region": "punjab",
-      "open" : "1"
+      captcha_type: type,
+      lang: "en",
+      region: "punjab",
+      open: "1",
     },
-    success: function(data) {
-      jQuery('#captcha').html(data);
-    }
+    success: function (data) {
+      jQuery("#captcha").html(data);
+    },
   });
 }
