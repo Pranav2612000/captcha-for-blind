@@ -11,6 +11,7 @@ function play_change_lang() {
 }
 
 function toggleCaptcha(e) {
+  e.preventDefault();
   var switch_audio_elem = document.getElementById("ca-switch-lang-icon");
   //console.log(e.target);
   //console.log(switch_audio_elem);
