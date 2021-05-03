@@ -108,7 +108,7 @@ function sendRequest(value) {
 };
 $(document).ready(function(){
   //var touch_sensor = document.querySelector('.touch-sensor');
-  var touch_sensor = document.querySelector('html');
+  var touch_sensor = document.querySelector('body');
   var hammer = new Hammer(touch_sensor);
   var manager = new Hammer.Manager(touch_sensor);
   var hammer = new Hammer(touch_sensor);
