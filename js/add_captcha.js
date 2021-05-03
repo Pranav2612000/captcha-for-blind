@@ -11,6 +11,9 @@ $(document).ready(function () {
     data: { captcha_type: captcha_type, lang: "en", open: "0" },
     success: function (data) {
       jQuery("#captcha").html(data);
+      $(".ca-button").attr("role", "button");
+      $(".ca-button").attr("aria-pressed", "false");
+      $(".ca-button").attr("tabindex", "0");
     },
   });
 });
