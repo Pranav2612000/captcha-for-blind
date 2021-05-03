@@ -13,11 +13,10 @@ function add_buttons() {
         <div id='myDropdown' class='dropdown-content'>
           <span onclick='changeLanguage(event, \"en\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>English</span>
           <span onclick='changeLanguage(event, \"hi\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Hindi</span>
-          <span onclick='changeLanguage(event, \"pa\")' class='lang-option ca-ignore'>Punjabi</span>
-          <span onclick='changeLanguage(event, \"gu\")' class='lang-option ca-ignore'>Gujrati</span>
-          <span onclick='changeLanguage(event, \"bn\")' class='lang-option ca-ignore'>Bengali</span>
-          <span onclick='changeLanguage(event, \"mr\")' class='lang-option ca-ignore'>Marathi</span>
-          <span class='lang-option ca-ignore'>Gujrati</span>
+          <span onclick='changeLanguage(event, \"pa\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Punjabi</span>
+          <span onclick='changeLanguage(event, \"gu\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Gujrati</span>
+          <span onclick='changeLanguage(event, \"bn\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Bengali</span>
+          <span onclick='changeLanguage(event, \"mr\",`" . $_SESSION['captcha_type'] . "`)' class='lang-option ca-ignore'>Marathi</span>
         </div>
       </button>
     </div> ";
