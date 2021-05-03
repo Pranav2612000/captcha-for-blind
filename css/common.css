@@ -203,3 +203,14 @@
   padding-right: 30px;
   font-size: 15px;
 }
+
+
+.main-btn {
+  position: absolute;
+  width:100%;
+  height: 70px;
+  display:flex;
+  top:0px;
+  background:transparent;
+  border:none;
+}
