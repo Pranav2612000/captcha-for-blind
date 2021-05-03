@@ -1,5 +1,8 @@
 $(document).ready(function () {
   var captcha_type = $("#captcha").attr("class");
+  $("#captcha").attr("role", "button");
+  $("#captcha").attr("aria-pressed", "false");
+  $("#captcha").attr("tabindex", "0");
   console.log(captcha_type);
   $.ajax({
     //url:"../backend/captcha_pages/questionnaire.php",
