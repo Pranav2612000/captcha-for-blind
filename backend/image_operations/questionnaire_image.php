@@ -74,7 +74,7 @@ if($cap_type == 'digit_recognition' || $cap_type == 'touch'){
 }
 else{
     if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'mr') {
-        $font = dirname(__FILE__) . '/../../assets/fonts/mr.ttf';
+        $font = dirname(__FILE__) . '/../../assets/fonts/Hind-Bold.ttf';
     } 
     else if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'gu') {
         $font = dirname(__FILE__) . '/../../assets/fonts/guj.ttf';
